@@ -1,0 +1,1020 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>C API &#8212; nanoarrow  documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="nanoarrow" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">nanoarrow  documentation</p>
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  C API
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nanoarrow-h">
+   nanoarrow.h
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/apache/arrow-nanoarrow/edit/main/docs/source/c.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="c-api">
+<h1>C API<a class="headerlink" href="#c-api" title="Permalink to this heading">#</a></h1>
+<section id="nanoarrow-h">
+<h2>nanoarrow.h<a class="headerlink" href="#nanoarrow-h" title="Permalink to this heading">#</a></h2>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv413ArrowTimeUnit">
+<span id="_CPPv313ArrowTimeUnit"></span><span id="_CPPv213ArrowTimeUnit"></span><span class="target" id="nanoarrow_8h_1a7048580e7cf78a7d6baac47a6b39e1ac"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowTimeUnit</span></span></span><a class="headerlink" href="#_CPPv413ArrowTimeUnit" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Arrow time unit enumerator. </p>
+<p>These names and values map to the corresponding arrow::TimeUnit::type enumerator. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13ArrowTimeUnit26NANOARROW_TIME_UNIT_SECONDE">
+<span id="_CPPv3N13ArrowTimeUnit26NANOARROW_TIME_UNIT_SECONDE"></span><span id="_CPPv2N13ArrowTimeUnit26NANOARROW_TIME_UNIT_SECONDE"></span><span class="target" id="nanoarrow_8h_1a7048580e7cf78a7d6baac47a6b39e1aca5bc21e6c8d406c9c36da2ba85663cd73"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NANOARROW_TIME_UNIT_SECOND</span></span></span><a class="headerlink" href="#_CPPv4N13ArrowTimeUnit26NANOARROW_TIME_UNIT_SECONDE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13ArrowTimeUnit25NANOARROW_TIME_UNIT_MILLIE">
+<span id="_CPPv3N13ArrowTimeUnit25NANOARROW_TIME_UNIT_MILLIE"></span><span id="_CPPv2N13ArrowTimeUnit25NANOARROW_TIME_UNIT_MILLIE"></span><span class="target" id="nanoarrow_8h_1a7048580e7cf78a7d6baac47a6b39e1aca63ca1ac70e0f7da665d53091e355a6e7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NANOARROW_TIME_UNIT_MILLI</span></span></span><a class="headerlink" href="#_CPPv4N13ArrowTimeUnit25NANOARROW_TIME_UNIT_MILLIE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13ArrowTimeUnit25NANOARROW_TIME_UNIT_MICROE">
+<span id="_CPPv3N13ArrowTimeUnit25NANOARROW_TIME_UNIT_MICROE"></span><span id="_CPPv2N13ArrowTimeUnit25NANOARROW_TIME_UNIT_MICROE"></span><span class="target" id="nanoarrow_8h_1a7048580e7cf78a7d6baac47a6b39e1aca1592fff76ca5a4dd006b9e7e375d2885"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NANOARROW_TIME_UNIT_MICRO</span></span></span><a class="headerlink" href="#_CPPv4N13ArrowTimeUnit25NANOARROW_TIME_UNIT_MICROE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13ArrowTimeUnit24NANOARROW_TIME_UNIT_NANOE">
+<span id="_CPPv3N13ArrowTimeUnit24NANOARROW_TIME_UNIT_NANOE"></span><span id="_CPPv2N13ArrowTimeUnit24NANOARROW_TIME_UNIT_NANOE"></span><span class="target" id="nanoarrow_8h_1a7048580e7cf78a7d6baac47a6b39e1acaae0643d5e56d7feb6415a4b7cd36f2be"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NANOARROW_TIME_UNIT_NANO</span></span></span><a class="headerlink" href="#_CPPv4N13ArrowTimeUnit24NANOARROW_TIME_UNIT_NANOE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411ArrowMalloc7int64_t">
+<span id="_CPPv311ArrowMalloc7int64_t"></span><span id="_CPPv211ArrowMalloc7int64_t"></span><span id="ArrowMalloc__int64_t"></span><span class="target" id="nanoarrow_8h_1ab05bc897baadee2d140b5bea9a846f7b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ArrowMalloc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411ArrowMalloc7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Allocate like malloc() </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412ArrowReallocPv7int64_t">
+<span id="_CPPv312ArrowReallocPv7int64_t"></span><span id="_CPPv212ArrowReallocPv7int64_t"></span><span id="ArrowRealloc__voidP.int64_t"></span><span class="target" id="nanoarrow_8h_1a3ae6c5f200450ea143c24613f4d115ac"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ArrowRealloc</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ptr</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412ArrowReallocPv7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Reallocate like realloc() </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv49ArrowFreePv">
+<span id="_CPPv39ArrowFreePv"></span><span id="_CPPv29ArrowFreePv"></span><span id="ArrowFree__voidP"></span><span class="target" id="nanoarrow_8h_1aa9552e61d8cce6520ef578d0c8c73860"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowFree</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49ArrowFreePv" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Free a pointer allocated using ArrowMalloc() or ArrowRealloc(). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427ArrowBufferAllocatorDefaultv">
+<span id="_CPPv327ArrowBufferAllocatorDefaultv"></span><span id="_CPPv227ArrowBufferAllocatorDefaultv"></span><span id="ArrowBufferAllocatorDefault"></span><span class="target" id="nanoarrow_8h_1a6a51426f49cc209e7488c93d39ca5b45"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBufferAllocator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAllocatorDefault</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427ArrowBufferAllocatorDefaultv" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Return the default allocator. </p>
+<p>The default allocator uses ArrowMalloc(), ArrowRealloc(), and ArrowFree(). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ArrowBufferDeallocatorPFvP20ArrowBufferAllocatorP7uint8_t7int64_tEPv">
+<span id="_CPPv322ArrowBufferDeallocatorPFvP20ArrowBufferAllocatorP7uint8_t7int64_tEPv"></span><span id="_CPPv222ArrowBufferDeallocatorPFvP20ArrowBufferAllocatorP7uint8_t7int64_tEPv"></span><span class="target" id="nanoarrow_8h_1a47bb3e6551ae911f2a7a084724617099"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBufferAllocator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferDeallocator</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">custom_free</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBufferAllocator</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">allocator</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ptr</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">)</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">private_data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowBufferDeallocatorPFvP20ArrowBufferAllocatorP7uint8_t7int64_tEPv" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Create a custom deallocator. </p>
+<p>Creates a buffer allocator with only a free method that can be used to attach a custom deallocator to an ArrowBuffer. This may be used to avoid copying an existing buffer that was not allocated using the infrastructure provided here (e.g., by an R or Python object). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413ArrowErrorSetP10ArrowErrorPKcz">
+<span id="_CPPv313ArrowErrorSetP10ArrowErrorPKcz"></span><span id="_CPPv213ArrowErrorSetP10ArrowErrorPKcz"></span><span id="ArrowErrorSet__ArrowErrorP.cCP.z"></span><span class="target" id="nanoarrow_8h_1a505469650d679b2fa680f31bdbc457cd"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowErrorSet</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413ArrowErrorSetP10ArrowErrorPKcz" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Set the contents of an error using printf syntax. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417ArrowErrorMessageP10ArrowError">
+<span id="_CPPv317ArrowErrorMessageP10ArrowError"></span><span id="_CPPv217ArrowErrorMessageP10ArrowError"></span><span id="ArrowErrorMessage__ArrowErrorP"></span><span class="target" id="nanoarrow_8h_1aefec4255da8f1a584c6fc8ef357d7b13"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ArrowErrorMessage</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417ArrowErrorMessageP10ArrowError" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Get the contents of an error. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415ArrowLayoutInitP11ArrowLayout9ArrowType">
+<span id="_CPPv315ArrowLayoutInitP11ArrowLayout9ArrowType"></span><span id="_CPPv215ArrowLayoutInitP11ArrowLayout9ArrowType"></span><span id="ArrowLayoutInit__ArrowLayoutP.ArrowType"></span><span class="target" id="nanoarrow_8h_1ac1954fef441ad60b50e688b58ee04280"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowLayoutInit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowLayout</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">layout</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowType</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">storage_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415ArrowLayoutInitP11ArrowLayout9ArrowType" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize a description of buffer arrangements from a storage type. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413ArrowCharViewPKc">
+<span id="_CPPv313ArrowCharViewPKc"></span><span id="_CPPv213ArrowCharViewPKc"></span><span id="ArrowCharView__cCP"></span><span class="target" id="nanoarrow_8h_1a650e076b60473a35a18ff0bc52b51474"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowCharView</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413ArrowCharViewPKc" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Create a string view from a null-terminated string. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415ArrowSchemaInitP11ArrowSchema9ArrowType">
+<span id="_CPPv315ArrowSchemaInitP11ArrowSchema9ArrowType"></span><span id="_CPPv215ArrowSchemaInitP11ArrowSchema9ArrowType"></span><span id="ArrowSchemaInit__ArrowSchemaP.ArrowType"></span><span class="target" id="nanoarrow_8h_1a0b6cd215e9ca7b1a4f88441d976774dc"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaInit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowType</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415ArrowSchemaInitP11ArrowSchema9ArrowType" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize the fields of a schema. </p>
+<p>Initializes the fields and release callback of schema_out. Caller is responsible for calling the schema-&gt;release callback if NANOARROW_OK is returned. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424ArrowSchemaInitFixedSizeP11ArrowSchema9ArrowType7int32_t">
+<span id="_CPPv324ArrowSchemaInitFixedSizeP11ArrowSchema9ArrowType7int32_t"></span><span id="_CPPv224ArrowSchemaInitFixedSizeP11ArrowSchema9ArrowType7int32_t"></span><span id="ArrowSchemaInitFixedSize__ArrowSchemaP.ArrowType.int32_t"></span><span class="target" id="nanoarrow_8h_1aae42dfd2a0647fa115f8c6bf55e6a901"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaInitFixedSize</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowType</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">data_type</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">fixed_size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424ArrowSchemaInitFixedSizeP11ArrowSchema9ArrowType7int32_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize the fields of a fixed-size schema. </p>
+<p>Returns EINVAL for fixed_size &lt;= 0 or for data_type that is not NANOARROW_TYPE_FIXED_SIZE_BINARY or NANOARROW_TYPE_FIXED_SIZE_LIST. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ArrowSchemaInitDecimalP11ArrowSchema9ArrowType7int32_t7int32_t">
+<span id="_CPPv322ArrowSchemaInitDecimalP11ArrowSchema9ArrowType7int32_t7int32_t"></span><span id="_CPPv222ArrowSchemaInitDecimalP11ArrowSchema9ArrowType7int32_t7int32_t"></span><span id="ArrowSchemaInitDecimal__ArrowSchemaP.ArrowType.int32_t.int32_t"></span><span class="target" id="nanoarrow_8h_1a33ecf70ad7b6e651f803724297d07f4f"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaInitDecimal</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowType</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">data_type</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">decimal_precision</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">decimal_scale</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowSchemaInitDecimalP11ArrowSchema9ArrowType7int32_t7int32_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize the fields of a decimal schema. </p>
+<p>Returns EINVAL for scale &lt;= 0 or for data_type that is not NANOARROW_TYPE_DECIMAL128 or NANOARROW_TYPE_DECIMAL256. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowSchemaInitDateTimeP11ArrowSchema9ArrowType13ArrowTimeUnitPKc">
+<span id="_CPPv323ArrowSchemaInitDateTimeP11ArrowSchema9ArrowType13ArrowTimeUnitPKc"></span><span id="_CPPv223ArrowSchemaInitDateTimeP11ArrowSchema9ArrowType13ArrowTimeUnitPKc"></span><span id="ArrowSchemaInitDateTime__ArrowSchemaP.ArrowType.ArrowTimeUnit.cCP"></span><span class="target" id="nanoarrow_8h_1ad43b01bf88395fbeac17fe8424d05fe8"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaInitDateTime</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowType</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">data_type</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413ArrowTimeUnit" title="ArrowTimeUnit"><span class="n"><span class="pre">ArrowTimeUnit</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">time_unit</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">timezone</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowSchemaInitDateTimeP11ArrowSchema9ArrowType13ArrowTimeUnitPKc" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize the fields of a time, timestamp, or duration schema. </p>
+<p>Returns EINVAL for data_type that is not NANOARROW_TYPE_TIME32, NANOARROW_TYPE_TIME64, NANOARROW_TYPE_TIMESTAMP, or NANOARROW_TYPE_DURATION. The timezone parameter must be NULL for a non-timestamp data_type. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419ArrowSchemaDeepCopyP11ArrowSchemaP11ArrowSchema">
+<span id="_CPPv319ArrowSchemaDeepCopyP11ArrowSchemaP11ArrowSchema"></span><span id="_CPPv219ArrowSchemaDeepCopyP11ArrowSchemaP11ArrowSchema"></span><span id="ArrowSchemaDeepCopy__ArrowSchemaP.ArrowSchemaP"></span><span class="target" id="nanoarrow_8h_1aa6c710253f812d5d5f3663c204468af4"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaDeepCopy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema_out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419ArrowSchemaDeepCopyP11ArrowSchemaP11ArrowSchema" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Make a (recursive) copy of a schema. </p>
+<p>Allocates and copies fields of schema into schema_out. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420ArrowSchemaSetFormatP11ArrowSchemaPKc">
+<span id="_CPPv320ArrowSchemaSetFormatP11ArrowSchemaPKc"></span><span id="_CPPv220ArrowSchemaSetFormatP11ArrowSchemaPKc"></span><span id="ArrowSchemaSetFormat__ArrowSchemaP.cCP"></span><span class="target" id="nanoarrow_8h_1a8eb8a8a73a189ea2f9eabdc237adbf84"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaSetFormat</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">format</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420ArrowSchemaSetFormatP11ArrowSchemaPKc" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Copy format into schema-&gt;format. </p>
+<p>schema must have been allocated using ArrowSchemaInit or ArrowSchemaDeepCopy. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418ArrowSchemaSetNameP11ArrowSchemaPKc">
+<span id="_CPPv318ArrowSchemaSetNameP11ArrowSchemaPKc"></span><span id="_CPPv218ArrowSchemaSetNameP11ArrowSchemaPKc"></span><span id="ArrowSchemaSetName__ArrowSchemaP.cCP"></span><span class="target" id="nanoarrow_8h_1a8724121ffb964a258577e1fb6038a2ab"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaSetName</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418ArrowSchemaSetNameP11ArrowSchemaPKc" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Copy name into schema-&gt;name. </p>
+<p>schema must have been allocated using ArrowSchemaInit or ArrowSchemaDeepCopy. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ArrowSchemaSetMetadataP11ArrowSchemaPKc">
+<span id="_CPPv322ArrowSchemaSetMetadataP11ArrowSchemaPKc"></span><span id="_CPPv222ArrowSchemaSetMetadataP11ArrowSchemaPKc"></span><span id="ArrowSchemaSetMetadata__ArrowSchemaP.cCP"></span><span class="target" id="nanoarrow_8h_1a3755dcc5bdbc9c850a5576ea74713c2b"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaSetMetadata</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">metadata</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowSchemaSetMetadataP11ArrowSchemaPKc" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Copy metadata into schema-&gt;metadata. </p>
+<p>schema must have been allocated using ArrowSchemaInit or ArrowSchemaDeepCopy. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427ArrowSchemaAllocateChildrenP11ArrowSchema7int64_t">
+<span id="_CPPv327ArrowSchemaAllocateChildrenP11ArrowSchema7int64_t"></span><span id="_CPPv227ArrowSchemaAllocateChildrenP11ArrowSchema7int64_t"></span><span id="ArrowSchemaAllocateChildren__ArrowSchemaP.int64_t"></span><span class="target" id="nanoarrow_8h_1abdbe36e6bdca89a4a8c3e11c6bb4660e"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaAllocateChildren</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n_children</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427ArrowSchemaAllocateChildrenP11ArrowSchema7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Allocate the schema-&gt;children array. </p>
+<p>Includes the memory for each child struct ArrowSchema. schema must have been allocated using ArrowSchemaInit or ArrowSchemaDeepCopy. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429ArrowSchemaAllocateDictionaryP11ArrowSchema">
+<span id="_CPPv329ArrowSchemaAllocateDictionaryP11ArrowSchema"></span><span id="_CPPv229ArrowSchemaAllocateDictionaryP11ArrowSchema"></span><span id="ArrowSchemaAllocateDictionary__ArrowSchemaP"></span><span class="target" id="nanoarrow_8h_1a7c2cc4b5fec3950a9d6cebda6af279da"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaAllocateDictionary</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429ArrowSchemaAllocateDictionaryP11ArrowSchema" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Allocate the schema-&gt;dictionary member. </p>
+<p>schema must have been allocated using ArrowSchemaInit or ArrowSchemaDeepCopy. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowMetadataReaderInitP19ArrowMetadataReaderPKc">
+<span id="_CPPv323ArrowMetadataReaderInitP19ArrowMetadataReaderPKc"></span><span id="_CPPv223ArrowMetadataReaderInitP19ArrowMetadataReaderPKc"></span><span id="ArrowMetadataReaderInit__ArrowMetadataReaderP.cCP"></span><span class="target" id="nanoarrow_8h_1a89254adeb3594ff8ca0d476ab47c0e8c"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowMetadataReaderInit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419ArrowMetadataReader" title="ArrowMetadataReader"><span class="n"><span class="pre">ArrowMetadataReader</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">reader</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">metadata</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowMetadataReaderInitP19ArrowMetadataReaderPKc" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize an <a class="reference internal" href="#struct_arrow_metadata_reader"><span class="std std-ref">ArrowMetadataReader</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowMetadataReaderReadP19ArrowMetadataReaderP15ArrowStringViewP15ArrowStringView">
+<span id="_CPPv323ArrowMetadataReaderReadP19ArrowMetadataReaderP15ArrowStringViewP15ArrowStringView"></span><span id="_CPPv223ArrowMetadataReaderReadP19ArrowMetadataReaderP15ArrowStringViewP15ArrowStringView"></span><span id="ArrowMetadataReaderRead__ArrowMetadataReaderP.ArrowStringViewP.ArrowStringViewP"></span><span class="target" id="nanoarrow_8h_1a7a6eb4c0792e56bcfb207859422398f5"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowMetadataReaderRead</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419ArrowMetadataReader" title="ArrowMetadataReader"><span class="n"><span class="pre">ArrowMetadataReader</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">reader</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">key_out</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">value_out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowMetadataReaderReadP19ArrowMetadataReaderP15ArrowStringViewP15ArrowStringView" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Read the next key/value pair from an <a class="reference internal" href="#struct_arrow_metadata_reader"><span class="std std-ref">ArrowMetadataReader</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419ArrowMetadataSizeOfPKc">
+<span id="_CPPv319ArrowMetadataSizeOfPKc"></span><span id="_CPPv219ArrowMetadataSizeOfPKc"></span><span id="ArrowMetadataSizeOf__cCP"></span><span class="target" id="nanoarrow_8h_1aabd80297b7447691b8e06356bd9255c7"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowMetadataSizeOf</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">metadata</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419ArrowMetadataSizeOfPKc" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>The number of bytes in in a key/value metadata string. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419ArrowMetadataHasKeyPKc15ArrowStringView">
+<span id="_CPPv319ArrowMetadataHasKeyPKc15ArrowStringView"></span><span id="_CPPv219ArrowMetadataHasKeyPKc15ArrowStringView"></span><span id="ArrowMetadataHasKey__cCP.ArrowStringView"></span><span class="target" id="nanoarrow_8h_1a56fdfaaf8c3d923696a605f25f1f66ae"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowMetadataHasKey</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">metadata</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419ArrowMetadataHasKeyPKc15ArrowStringView" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Check for a key in schema metadata. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421ArrowMetadataGetValuePKc15ArrowStringViewP15ArrowStringView">
+<span id="_CPPv321ArrowMetadataGetValuePKc15ArrowStringViewP15ArrowStringView"></span><span id="_CPPv221ArrowMetadataGetValuePKc15ArrowStringViewP15ArrowStringView"></span><span id="ArrowMetadataGetValue__cCP.ArrowStringView.ArrowStringViewP"></span><span class="target" id="nanoarrow_8h_1a154a131dd727d341a3228c853da70b3e"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowMetadataGetValue</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">metadata</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">value_out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421ArrowMetadataGetValuePKc15ArrowStringViewP15ArrowStringView" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Extract a value from schema metadata. </p>
+<p>If key does not exist in metadata, value_out is unmodified </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424ArrowMetadataBuilderInitP11ArrowBufferPKc">
+<span id="_CPPv324ArrowMetadataBuilderInitP11ArrowBufferPKc"></span><span id="_CPPv224ArrowMetadataBuilderInitP11ArrowBufferPKc"></span><span id="ArrowMetadataBuilderInit__ArrowBufferP.cCP"></span><span class="target" id="nanoarrow_8h_1a1fd3676ba441f4f9430315a73869e808"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowMetadataBuilderInit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">metadata</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424ArrowMetadataBuilderInitP11ArrowBufferPKc" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize a builder for schema metadata from key/value pairs. </p>
+<p>metadata can be an existing metadata string or NULL to initialize an empty metadata string. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426ArrowMetadataBuilderAppendP11ArrowBuffer15ArrowStringView15ArrowStringView">
+<span id="_CPPv326ArrowMetadataBuilderAppendP11ArrowBuffer15ArrowStringView15ArrowStringView"></span><span id="_CPPv226ArrowMetadataBuilderAppendP11ArrowBuffer15ArrowStringView15ArrowStringView"></span><span id="ArrowMetadataBuilderAppend__ArrowBufferP.ArrowStringView.ArrowStringView"></span><span class="target" id="nanoarrow_8h_1a3a14a413a8570d3f96d15255c3f1fc7a"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowMetadataBuilderAppend</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426ArrowMetadataBuilderAppendP11ArrowBuffer15ArrowStringView15ArrowStringView" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Append a key/value pair to a buffer containing serialized metadata. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowMetadataBuilderSetP11ArrowBuffer15ArrowStringView15ArrowStringView">
+<span id="_CPPv323ArrowMetadataBuilderSetP11ArrowBuffer15ArrowStringView15ArrowStringView"></span><span id="_CPPv223ArrowMetadataBuilderSetP11ArrowBuffer15ArrowStringView15ArrowStringView"></span><span id="ArrowMetadataBuilderSet__ArrowBufferP.ArrowStringView.ArrowStringView"></span><span class="target" id="nanoarrow_8h_1a4d8fca20ce7049d66a6445df1a2d83e0"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowMetadataBuilderSet</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowMetadataBuilderSetP11ArrowBuffer15ArrowStringView15ArrowStringView" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Set a key/value pair to a buffer containing serialized metadata. </p>
+<p>Ensures that the only entry for key in the metadata is set to value. This function maintains the existing position of (the first instance of) key if present in the data. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426ArrowMetadataBuilderRemoveP11ArrowBuffer15ArrowStringView">
+<span id="_CPPv326ArrowMetadataBuilderRemoveP11ArrowBuffer15ArrowStringView"></span><span id="_CPPv226ArrowMetadataBuilderRemoveP11ArrowBuffer15ArrowStringView"></span><span id="ArrowMetadataBuilderRemove__ArrowBufferP.ArrowStringView"></span><span class="target" id="nanoarrow_8h_1a093520d83b6d21c836e178b900ff96b1"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowMetadataBuilderRemove</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426ArrowMetadataBuilderRemoveP11ArrowBuffer15ArrowStringView" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Remove a key from a buffer containing serialized metadata. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419ArrowSchemaViewInitP15ArrowSchemaViewP11ArrowSchemaP10ArrowError">
+<span id="_CPPv319ArrowSchemaViewInitP15ArrowSchemaViewP11ArrowSchemaP10ArrowError"></span><span id="_CPPv219ArrowSchemaViewInitP15ArrowSchemaViewP11ArrowSchemaP10ArrowError"></span><span id="ArrowSchemaViewInit__ArrowSchemaViewP.ArrowSchemaP.ArrowErrorP"></span><span class="target" id="nanoarrow_8h_1a3e14b8d831ace92286c476206ba00ca1"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaViewInit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv415ArrowSchemaView" title="ArrowSchemaView"><span class="n"><span class="pre">ArrowSchemaView</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema_view</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419ArrowSchemaViewInitP15ArrowSchemaViewP11ArrowSchemaP10ArrowError" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize an <a class="reference internal" href="#struct_arrow_schema_view"><span class="std std-ref">ArrowSchemaView</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415ArrowBufferInitP11ArrowBuffer">
+<span id="_CPPv315ArrowBufferInitP11ArrowBuffer"></span><span id="_CPPv215ArrowBufferInitP11ArrowBuffer"></span><span id="ArrowBufferInit__ArrowBufferP"></span><span class="target" id="nanoarrow_8h_1ac85f9e1b00d78ebc2ac388f4fbc3c160"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferInit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415ArrowBufferInitP11ArrowBuffer" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize an ArrowBuffer. </p>
+<p>Initialize a buffer with a NULL, zero-size buffer using the default buffer allocator. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowBufferSetAllocatorP11ArrowBuffer20ArrowBufferAllocator">
+<span id="_CPPv323ArrowBufferSetAllocatorP11ArrowBuffer20ArrowBufferAllocator"></span><span id="_CPPv223ArrowBufferSetAllocatorP11ArrowBuffer20ArrowBufferAllocator"></span><span id="ArrowBufferSetAllocator__ArrowBufferP.ArrowBufferAllocator"></span><span class="target" id="nanoarrow_8h_1aad4ce79883f9eecc8350f57c53ca3b6c"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferSetAllocator</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBufferAllocator</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">allocator</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowBufferSetAllocatorP11ArrowBuffer20ArrowBufferAllocator" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Set a newly-initialized buffer’s allocator. </p>
+<p>Returns EINVAL if the buffer has already been allocated. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416ArrowBufferResetP11ArrowBuffer">
+<span id="_CPPv316ArrowBufferResetP11ArrowBuffer"></span><span id="_CPPv216ArrowBufferResetP11ArrowBuffer"></span><span id="ArrowBufferReset__ArrowBufferP"></span><span class="target" id="nanoarrow_8h_1a343c15a9d511553878c0c2f54c355d6e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferReset</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ArrowBufferResetP11ArrowBuffer" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Reset an ArrowBuffer. </p>
+<p>Releases the buffer using the allocator’s free method if the buffer’s data member is non-null, sets the data member to NULL, and sets the buffer’s size and capacity to 0. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415ArrowBufferMoveP11ArrowBufferP11ArrowBuffer">
+<span id="_CPPv315ArrowBufferMoveP11ArrowBufferP11ArrowBuffer"></span><span id="_CPPv215ArrowBufferMoveP11ArrowBufferP11ArrowBuffer"></span><span id="ArrowBufferMove__ArrowBufferP.ArrowBufferP"></span><span class="target" id="nanoarrow_8h_1a1c82fbbedca64d91977a03ca00818f6d"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferMove</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer_out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415ArrowBufferMoveP11ArrowBufferP11ArrowBuffer" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Move an ArrowBuffer. </p>
+<p>Transfers the buffer data and lifecycle management to another address and resets buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417ArrowBufferResizeP11ArrowBuffer7int64_tc">
+<span id="_CPPv317ArrowBufferResizeP11ArrowBuffer7int64_tc"></span><span id="_CPPv217ArrowBufferResizeP11ArrowBuffer7int64_tc"></span><span id="ArrowBufferResize__ArrowBufferP.int64_t.c"></span><span class="target" id="nanoarrow_8h_1a7334c70b8fd2db62de0645cce9bb6087"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferResize</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">new_capacity_bytes</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">shrink_to_fit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417ArrowBufferResizeP11ArrowBuffer7int64_tc" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Grow or shrink a buffer to a given capacity. </p>
+<p>When shrinking the capacity of the buffer, the buffer is only reallocated if shrink_to_fit is non-zero. Calling ArrowBufferResize() does not adjust the buffer’s size member except to ensure that the invariant capacity &gt;= size remains true. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418ArrowBufferReserveP11ArrowBuffer7int64_t">
+<span id="_CPPv318ArrowBufferReserveP11ArrowBuffer7int64_t"></span><span id="_CPPv218ArrowBufferReserveP11ArrowBuffer7int64_t"></span><span id="ArrowBufferReserve__ArrowBufferP.int64_t"></span><span class="target" id="nanoarrow_8h_1a355bfda26c6bd1db1765076a042ba345"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferReserve</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">additional_size_bytes</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418ArrowBufferReserveP11ArrowBuffer7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Ensure a buffer has at least a given additional capacity. </p>
+<p>Ensures that the buffer has space to append at least additional_size_bytes, overallocating when required. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowBufferAppendUnsafeP11ArrowBufferPKv7int64_t">
+<span id="_CPPv323ArrowBufferAppendUnsafeP11ArrowBufferPKv7int64_t"></span><span id="_CPPv223ArrowBufferAppendUnsafeP11ArrowBufferPKv7int64_t"></span><span id="ArrowBufferAppendUnsafe__ArrowBufferP.voidCP.int64_t"></span><span class="target" id="nanoarrow_8h_1a6afb02edfa7936ecae95936672c768bb"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendUnsafe</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size_bytes</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowBufferAppendUnsafeP11ArrowBufferPKv7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write data to buffer and increment the buffer size. </p>
+<p>This function does not check that buffer has the required capacity </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417ArrowBufferAppendP11ArrowBufferPKv7int64_t">
+<span id="_CPPv317ArrowBufferAppendP11ArrowBufferPKv7int64_t"></span><span id="_CPPv217ArrowBufferAppendP11ArrowBufferPKv7int64_t"></span><span id="ArrowBufferAppend__ArrowBufferP.voidCP.int64_t"></span><span class="target" id="nanoarrow_8h_1ac8c2d733e4c7313aebc4d248f39f6cbb"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppend</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size_bytes</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417ArrowBufferAppendP11ArrowBufferPKv7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write data to buffer and increment the buffer size. </p>
+<p>This function writes and ensures that the buffer has the required capacity, possibly by reallocating the buffer. Like ArrowBufferReserve, this will overallocate when reallocation is required. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421ArrowBufferAppendFillP11ArrowBuffer7uint8_t7int64_t">
+<span id="_CPPv321ArrowBufferAppendFillP11ArrowBuffer7uint8_t7int64_t"></span><span id="_CPPv221ArrowBufferAppendFillP11ArrowBuffer7uint8_t7int64_t"></span><span id="ArrowBufferAppendFill__ArrowBufferP.uint8_t.int64_t"></span><span class="target" id="nanoarrow_8h_1ac4bbb86e0b2d23b298394f6e646243e7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendFill</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size_bytes</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421ArrowBufferAppendFillP11ArrowBuffer7uint8_t7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write fill to buffer and increment the buffer size. </p>
+<p>This function writes the specified number of fill bytes and ensures that the buffer has the required capacity, </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421ArrowBufferAppendInt8P11ArrowBuffer6int8_t">
+<span id="_CPPv321ArrowBufferAppendInt8P11ArrowBuffer6int8_t"></span><span id="_CPPv221ArrowBufferAppendInt8P11ArrowBuffer6int8_t"></span><span id="ArrowBufferAppendInt8__ArrowBufferP.int8_t"></span><span class="target" id="nanoarrow_8h_1aeea176364336f15792f3806b6a83a556"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendInt8</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421ArrowBufferAppendInt8P11ArrowBuffer6int8_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write an 8-bit integer to a buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ArrowBufferAppendUInt8P11ArrowBuffer7uint8_t">
+<span id="_CPPv322ArrowBufferAppendUInt8P11ArrowBuffer7uint8_t"></span><span id="_CPPv222ArrowBufferAppendUInt8P11ArrowBuffer7uint8_t"></span><span id="ArrowBufferAppendUInt8__ArrowBufferP.uint8_t"></span><span class="target" id="nanoarrow_8h_1abf2e92c5b3824fda3f717e57b7e0c45e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendUInt8</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowBufferAppendUInt8P11ArrowBuffer7uint8_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write an unsigned 8-bit integer to a buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ArrowBufferAppendInt16P11ArrowBuffer7int16_t">
+<span id="_CPPv322ArrowBufferAppendInt16P11ArrowBuffer7int16_t"></span><span id="_CPPv222ArrowBufferAppendInt16P11ArrowBuffer7int16_t"></span><span id="ArrowBufferAppendInt16__ArrowBufferP.int16_t"></span><span class="target" id="nanoarrow_8h_1ab09ee38169d62e8ef5314dd9e7fde233"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendInt16</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowBufferAppendInt16P11ArrowBuffer7int16_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write a 16-bit integer to a buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowBufferAppendUInt16P11ArrowBuffer8uint16_t">
+<span id="_CPPv323ArrowBufferAppendUInt16P11ArrowBuffer8uint16_t"></span><span id="_CPPv223ArrowBufferAppendUInt16P11ArrowBuffer8uint16_t"></span><span id="ArrowBufferAppendUInt16__ArrowBufferP.uint16_t"></span><span class="target" id="nanoarrow_8h_1a86dc0ae3a1d57382dbe4da4b5118dd6b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendUInt16</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowBufferAppendUInt16P11ArrowBuffer8uint16_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write an unsigned 16-bit integer to a buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ArrowBufferAppendInt32P11ArrowBuffer7int32_t">
+<span id="_CPPv322ArrowBufferAppendInt32P11ArrowBuffer7int32_t"></span><span id="_CPPv222ArrowBufferAppendInt32P11ArrowBuffer7int32_t"></span><span id="ArrowBufferAppendInt32__ArrowBufferP.int32_t"></span><span class="target" id="nanoarrow_8h_1a5c36ac40ea35b61b1f845fe4a7ea5247"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendInt32</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowBufferAppendInt32P11ArrowBuffer7int32_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write a 32-bit integer to a buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowBufferAppendUInt32P11ArrowBuffer8uint32_t">
+<span id="_CPPv323ArrowBufferAppendUInt32P11ArrowBuffer8uint32_t"></span><span id="_CPPv223ArrowBufferAppendUInt32P11ArrowBuffer8uint32_t"></span><span id="ArrowBufferAppendUInt32__ArrowBufferP.uint32_t"></span><span class="target" id="nanoarrow_8h_1a82b0e69bc74da1362f9bde4c00856143"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendUInt32</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowBufferAppendUInt32P11ArrowBuffer8uint32_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write an unsigned 32-bit integer to a buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ArrowBufferAppendInt64P11ArrowBuffer7int64_t">
+<span id="_CPPv322ArrowBufferAppendInt64P11ArrowBuffer7int64_t"></span><span id="_CPPv222ArrowBufferAppendInt64P11ArrowBuffer7int64_t"></span><span id="ArrowBufferAppendInt64__ArrowBufferP.int64_t"></span><span class="target" id="nanoarrow_8h_1a7917aee52cf3225e0ec8982dcfd9a570"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendInt64</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowBufferAppendInt64P11ArrowBuffer7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write a 64-bit integer to a buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowBufferAppendUInt64P11ArrowBuffer8uint64_t">
+<span id="_CPPv323ArrowBufferAppendUInt64P11ArrowBuffer8uint64_t"></span><span id="_CPPv223ArrowBufferAppendUInt64P11ArrowBuffer8uint64_t"></span><span id="ArrowBufferAppendUInt64__ArrowBufferP.uint64_t"></span><span class="target" id="nanoarrow_8h_1a625f65a799abf1efa39002b6dcacb709"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendUInt64</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowBufferAppendUInt64P11ArrowBuffer8uint64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write an unsigned 64-bit integer to a buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowBufferAppendDoubleP11ArrowBufferd">
+<span id="_CPPv323ArrowBufferAppendDoubleP11ArrowBufferd"></span><span id="_CPPv223ArrowBufferAppendDoubleP11ArrowBufferd"></span><span id="ArrowBufferAppendDouble__ArrowBufferP.double"></span><span class="target" id="nanoarrow_8h_1a92cdc5b9edcfc816fdd12f38be36eb12"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendDouble</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowBufferAppendDoubleP11ArrowBufferd" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write a double to a buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ArrowBufferAppendFloatP11ArrowBufferf">
+<span id="_CPPv322ArrowBufferAppendFloatP11ArrowBufferf"></span><span id="_CPPv222ArrowBufferAppendFloatP11ArrowBufferf"></span><span id="ArrowBufferAppendFloat__ArrowBufferP.float"></span><span class="target" id="nanoarrow_8h_1afe5febfaba36b789579194612819af0f"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBufferAppendFloat</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowBufferAppendFloatP11ArrowBufferf" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Write a float to a buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411ArrowBitGetPK7uint8_t7int64_t">
+<span id="_CPPv311ArrowBitGetPK7uint8_t7int64_t"></span><span id="_CPPv211ArrowBitGetPK7uint8_t7int64_t"></span><span id="ArrowBitGet__uint8_tCP.int64_t"></span><span class="target" id="nanoarrow_8h_1a66bb6ec563f8c90dd55856cbc1522757"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitGet</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bits</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411ArrowBitGetPK7uint8_t7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Extract a boolean value from a bitmap. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411ArrowBitSetP7uint8_t7int64_t">
+<span id="_CPPv311ArrowBitSetP7uint8_t7int64_t"></span><span id="_CPPv211ArrowBitSetP7uint8_t7int64_t"></span><span id="ArrowBitSet__uint8_tP.int64_t"></span><span class="target" id="nanoarrow_8h_1a2a9cc30717e11b59813a124975569a6a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitSet</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bits</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411ArrowBitSetP7uint8_t7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Set a boolean value to a bitmap to true. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413ArrowBitClearP7uint8_t7int64_t">
+<span id="_CPPv313ArrowBitClearP7uint8_t7int64_t"></span><span id="_CPPv213ArrowBitClearP7uint8_t7int64_t"></span><span id="ArrowBitClear__uint8_tP.int64_t"></span><span class="target" id="nanoarrow_8h_1aef7decc8c405ecea91f6050547453d0a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitClear</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bits</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413ArrowBitClearP7uint8_t7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Set a boolean value to a bitmap to false. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413ArrowBitSetToP7uint8_t7int64_t7uint8_t">
+<span id="_CPPv313ArrowBitSetToP7uint8_t7int64_t7uint8_t"></span><span id="_CPPv213ArrowBitSetToP7uint8_t7int64_t7uint8_t"></span><span id="ArrowBitSetTo__uint8_tP.int64_t.uint8_t"></span><span class="target" id="nanoarrow_8h_1a9900b948593432d514a7175d68c620f7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitSetTo</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bits</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413ArrowBitSetToP7uint8_t7int64_t7uint8_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Set a boolean value to a bitmap. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414ArrowBitsSetToP7uint8_t7int64_t7int64_t7uint8_t">
+<span id="_CPPv314ArrowBitsSetToP7uint8_t7int64_t7int64_t7uint8_t"></span><span id="_CPPv214ArrowBitsSetToP7uint8_t7int64_t7int64_t7uint8_t"></span><span id="ArrowBitsSetTo__uint8_tP.int64_t.int64_t.uint8_t"></span><span class="target" id="nanoarrow_8h_1aee1398dd8c816dc7014961206bfd1493"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitsSetTo</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bits</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">start_offset</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bits_are_set</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414ArrowBitsSetToP7uint8_t7int64_t7int64_t7uint8_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Set a boolean value to a range in a bitmap. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416ArrowBitCountSetPK7uint8_t7int64_t7int64_t">
+<span id="_CPPv316ArrowBitCountSetPK7uint8_t7int64_t7int64_t"></span><span id="_CPPv216ArrowBitCountSetPK7uint8_t7int64_t7int64_t"></span><span id="ArrowBitCountSet__uint8_tCP.int64_t.int64_t"></span><span class="target" id="nanoarrow_8h_1a4313046e811ff93fdc993423c4904b97"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitCountSet</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bits</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_from</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_to</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ArrowBitCountSetPK7uint8_t7int64_t7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Count true values in a bitmap. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415ArrowBitmapInitP11ArrowBitmap">
+<span id="_CPPv315ArrowBitmapInitP11ArrowBitmap"></span><span id="_CPPv215ArrowBitmapInitP11ArrowBitmap"></span><span id="ArrowBitmapInit__ArrowBitmapP"></span><span class="target" id="nanoarrow_8h_1acd63cc6dd7127602a72a7ba994aaabed"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitmapInit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBitmap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bitmap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415ArrowBitmapInitP11ArrowBitmap" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize an ArrowBitmap. </p>
+<p>Initialize the builder’s buffer, empty its cache, and reset the size to zero </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418ArrowBitmapReserveP11ArrowBitmap7int64_t">
+<span id="_CPPv318ArrowBitmapReserveP11ArrowBitmap7int64_t"></span><span id="_CPPv218ArrowBitmapReserveP11ArrowBitmap7int64_t"></span><span id="ArrowBitmapReserve__ArrowBitmapP.int64_t"></span><span class="target" id="nanoarrow_8h_1a8a1080cb4f1cb2dce6110f3ddc198fcb"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitmapReserve</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBitmap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bitmap</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">additional_size_bits</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418ArrowBitmapReserveP11ArrowBitmap7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Ensure a bitmap builder has at least a given additional capacity. </p>
+<p>Ensures that the buffer has space to append at least additional_size_bits, overallocating when required. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417ArrowBitmapResizeP11ArrowBitmap7int64_tc">
+<span id="_CPPv317ArrowBitmapResizeP11ArrowBitmap7int64_tc"></span><span id="_CPPv217ArrowBitmapResizeP11ArrowBitmap7int64_tc"></span><span id="ArrowBitmapResize__ArrowBitmapP.int64_t.c"></span><span class="target" id="nanoarrow_8h_1a34e4af39131d13cfd213f7f62aaf9fac"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitmapResize</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBitmap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bitmap</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">new_capacity_bits</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">shrink_to_fit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417ArrowBitmapResizeP11ArrowBitmap7int64_tc" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Grow or shrink a bitmap to a given capacity. </p>
+<p>When shrinking the capacity of the bitmap, the bitmap is only reallocated if shrink_to_fit is non-zero. Calling ArrowBitmapResize() does not adjust the buffer’s size member except when shrinking new_capacity_bits to a value less than the current number of bits in the bitmap. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417ArrowBitmapAppendP11ArrowBitmap7uint8_t7int64_t">
+<span id="_CPPv317ArrowBitmapAppendP11ArrowBitmap7uint8_t7int64_t"></span><span id="_CPPv217ArrowBitmapAppendP11ArrowBitmap7uint8_t7int64_t"></span><span id="ArrowBitmapAppend__ArrowBitmapP.uint8_t.int64_t"></span><span class="target" id="nanoarrow_8h_1ab9fa70f0992b02af7eb0843d7d917db7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitmapAppend</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBitmap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bitmap</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bits_are_set</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417ArrowBitmapAppendP11ArrowBitmap7uint8_t7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Reserve space for and append zero or more of the same boolean value to a bitmap. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowBitmapAppendUnsafeP11ArrowBitmap7uint8_t7int64_t">
+<span id="_CPPv323ArrowBitmapAppendUnsafeP11ArrowBitmap7uint8_t7int64_t"></span><span id="_CPPv223ArrowBitmapAppendUnsafeP11ArrowBitmap7uint8_t7int64_t"></span><span id="ArrowBitmapAppendUnsafe__ArrowBitmapP.uint8_t.int64_t"></span><span class="target" id="nanoarrow_8h_1acbbb2d68806fca20c4316c922f12978e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitmapAppendUnsafe</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBitmap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bitmap</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bits_are_set</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowBitmapAppendUnsafeP11ArrowBitmap7uint8_t7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Append zero or more of the same boolean value to a bitmap. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427ArrowBitmapAppendInt8UnsafeP11ArrowBitmapPK6int8_t7int64_t">
+<span id="_CPPv327ArrowBitmapAppendInt8UnsafeP11ArrowBitmapPK6int8_t7int64_t"></span><span id="_CPPv227ArrowBitmapAppendInt8UnsafeP11ArrowBitmapPK6int8_t7int64_t"></span><span id="ArrowBitmapAppendInt8Unsafe__ArrowBitmapP.int8_tCP.int64_t"></span><span class="target" id="nanoarrow_8h_1a543fa468114816549b3478c27e81c72e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitmapAppendInt8Unsafe</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBitmap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bitmap</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">values</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n_values</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427ArrowBitmapAppendInt8UnsafeP11ArrowBitmapPK6int8_t7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Append boolean values encoded as int8_t to a bitmap. </p>
+<p>The values must all be 0 or 1. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428ArrowBitmapAppendInt32UnsafeP11ArrowBitmapPK7int32_t7int64_t">
+<span id="_CPPv328ArrowBitmapAppendInt32UnsafeP11ArrowBitmapPK7int32_t7int64_t"></span><span id="_CPPv228ArrowBitmapAppendInt32UnsafeP11ArrowBitmapPK7int32_t7int64_t"></span><span id="ArrowBitmapAppendInt32Unsafe__ArrowBitmapP.int32_tCP.int64_t"></span><span class="target" id="nanoarrow_8h_1ae1fe367ccb49ec588e829fc654ea9220"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitmapAppendInt32Unsafe</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBitmap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bitmap</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">values</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n_values</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428ArrowBitmapAppendInt32UnsafeP11ArrowBitmapPK7int32_t7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Append boolean values encoded as int32_t to a bitmap. </p>
+<p>The values must all be 0 or 1. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416ArrowBitmapResetP11ArrowBitmap">
+<span id="_CPPv316ArrowBitmapResetP11ArrowBitmap"></span><span id="_CPPv216ArrowBitmapResetP11ArrowBitmap"></span><span id="ArrowBitmapReset__ArrowBitmapP"></span><span class="target" id="nanoarrow_8h_1a1c77e0ca97b6d1ddfe79a867a9ef9c9e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowBitmapReset</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBitmap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bitmap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ArrowBitmapResetP11ArrowBitmap" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Reset a bitmap builder. </p>
+<p>Releases any memory held by buffer, empties the cache, and resets the size to zero </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414ArrowArrayInitP10ArrowArray9ArrowType">
+<span id="_CPPv314ArrowArrayInitP10ArrowArray9ArrowType"></span><span id="_CPPv214ArrowArrayInitP10ArrowArray9ArrowType"></span><span id="ArrowArrayInit__ArrowArrayP.ArrowType"></span><span class="target" id="nanoarrow_8h_1a2c80b8404ed26bba84ba1a436c2ac26c"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayInit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowType</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">storage_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414ArrowArrayInitP10ArrowArray9ArrowType" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize the fields of an array. </p>
+<p>Initializes the fields and release callback of array. Caller is responsible for calling the array-&gt;release callback if NANOARROW_OK is returned. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424ArrowArrayInitFromSchemaP10ArrowArrayP11ArrowSchemaP10ArrowError">
+<span id="_CPPv324ArrowArrayInitFromSchemaP10ArrowArrayP11ArrowSchemaP10ArrowError"></span><span id="_CPPv224ArrowArrayInitFromSchemaP10ArrowArrayP11ArrowSchemaP10ArrowError"></span><span id="ArrowArrayInitFromSchema__ArrowArrayP.ArrowSchemaP.ArrowErrorP"></span><span class="target" id="nanoarrow_8h_1a31a82c7fe72e5cc46eeab4713c284f84"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayInitFromSchema</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424ArrowArrayInitFromSchemaP10ArrowArrayP11ArrowSchemaP10ArrowError" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize the contents of an ArrowArray from an ArrowSchema. </p>
+<p>Caller is responsible for calling the array-&gt;release callback if NANOARROW_OK is returned. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426ArrowArrayAllocateChildrenP10ArrowArray7int64_t">
+<span id="_CPPv326ArrowArrayAllocateChildrenP10ArrowArray7int64_t"></span><span id="_CPPv226ArrowArrayAllocateChildrenP10ArrowArray7int64_t"></span><span id="ArrowArrayAllocateChildren__ArrowArrayP.int64_t"></span><span class="target" id="nanoarrow_8h_1a2efc2f2831aabd24e3a894959206b770"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayAllocateChildren</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n_children</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426ArrowArrayAllocateChildrenP10ArrowArray7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Allocate the array-&gt;children array. </p>
+<p>Includes the memory for each child struct ArrowArray, whose members are marked as released and may be subsequently initialized with ArrowArrayInit or moved from an existing ArrowArray. schema must have been allocated using ArrowArrayInit. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428ArrowArrayAllocateDictionaryP10ArrowArray">
+<span id="_CPPv328ArrowArrayAllocateDictionaryP10ArrowArray"></span><span id="_CPPv228ArrowArrayAllocateDictionaryP10ArrowArray"></span><span id="ArrowArrayAllocateDictionary__ArrowArrayP"></span><span class="target" id="nanoarrow_8h_1a0bfe9d4cddb8de65e29ab46ce0b495a4"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayAllocateDictionary</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428ArrowArrayAllocateDictionaryP10ArrowArray" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Allocate the array-&gt;dictionary member. </p>
+<p>Includes the memory for the struct ArrowArray, whose contents is marked as released and may be subsequently initialized with ArrowArrayInit or moved from an existing ArrowArray. array must have been allocated using ArrowArrayInit </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427ArrowArraySetValidityBitmapP10ArrowArrayP11ArrowBitmap">
+<span id="_CPPv327ArrowArraySetValidityBitmapP10ArrowArrayP11ArrowBitmap"></span><span id="_CPPv227ArrowArraySetValidityBitmapP10ArrowArrayP11ArrowBitmap"></span><span id="ArrowArraySetValidityBitmap__ArrowArrayP.ArrowBitmapP"></span><span class="target" id="nanoarrow_8h_1ad8aef62893226fa4764a9c63eb602080"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArraySetValidityBitmap</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBitmap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bitmap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427ArrowArraySetValidityBitmapP10ArrowArrayP11ArrowBitmap" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Set the validity bitmap of an ArrowArray. </p>
+<p>array must have been allocated using ArrowArrayInit </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419ArrowArraySetBufferP10ArrowArray7int64_tP11ArrowBuffer">
+<span id="_CPPv319ArrowArraySetBufferP10ArrowArray7int64_tP11ArrowBuffer"></span><span id="_CPPv219ArrowArraySetBufferP10ArrowArray7int64_tP11ArrowBuffer"></span><span id="ArrowArraySetBuffer__ArrowArrayP.int64_t.ArrowBufferP"></span><span class="target" id="nanoarrow_8h_1a52111316e373e24687710f5158da3527"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArraySetBuffer</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419ArrowArraySetBufferP10ArrowArray7int64_tP11ArrowBuffer" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Set a buffer of an ArrowArray. </p>
+<p>array must have been allocated using ArrowArrayInit </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424ArrowArrayValidityBitmapP10ArrowArray">
+<span id="_CPPv324ArrowArrayValidityBitmapP10ArrowArray"></span><span id="_CPPv224ArrowArrayValidityBitmapP10ArrowArray"></span><span id="ArrowArrayValidityBitmap__ArrowArrayP"></span><span class="target" id="nanoarrow_8h_1a3e0fdea696cd9afabd3eb2a59ea95375"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBitmap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayValidityBitmap</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424ArrowArrayValidityBitmapP10ArrowArray" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Get the validity bitmap of an ArrowArray. </p>
+<p>array must have been allocated using ArrowArrayInit </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416ArrowArrayBufferP10ArrowArray7int64_t">
+<span id="_CPPv316ArrowArrayBufferP10ArrowArray7int64_t"></span><span id="_CPPv216ArrowArrayBufferP10ArrowArray7int64_t"></span><span id="ArrowArrayBuffer__ArrowArrayP.int64_t"></span><span class="target" id="nanoarrow_8h_1afbd17d94c188c9760f5bc91195683bd8"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBuffer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayBuffer</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ArrowArrayBufferP10ArrowArray7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Get a buffer of an ArrowArray. </p>
+<p>array must have been allocated using ArrowArrayInit </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424ArrowArrayStartAppendingP10ArrowArray">
+<span id="_CPPv324ArrowArrayStartAppendingP10ArrowArray"></span><span id="_CPPv224ArrowArrayStartAppendingP10ArrowArray"></span><span id="ArrowArrayStartAppending__ArrowArrayP"></span><span class="target" id="nanoarrow_8h_1aab61ae0a0eb698c817bee25ee3a750f5"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayStartAppending</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424ArrowArrayStartAppendingP10ArrowArray" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Start element-wise appending to an ArrowArray. </p>
+<p>Initializes any values needed to use ArrowArrayAppend*() functions. All element-wise appenders append by value and return EINVAL if the exact value cannot be represented by the underlying storage type. array must have been allocated using ArrowArrayInit </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417ArrowArrayReserveP10ArrowArray7int64_t">
+<span id="_CPPv317ArrowArrayReserveP10ArrowArray7int64_t"></span><span id="_CPPv217ArrowArrayReserveP10ArrowArray7int64_t"></span><span id="ArrowArrayReserve__ArrowArrayP.int64_t"></span><span class="target" id="nanoarrow_8h_1aa2644de6315ff68a694370c51948071e"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayReserve</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">additional_size_elements</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417ArrowArrayReserveP10ArrowArray7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Reserve space for future appends. </p>
+<p>For buffer sizes that can be calculated (i.e., not string data buffers or child array sizes for non-fixed-size arrays), recursively reserve space for additional elements. This is useful for reducing the number of reallocations that occur using the item-wise appenders. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420ArrowArrayAppendNullP10ArrowArray7int64_t">
+<span id="_CPPv320ArrowArrayAppendNullP10ArrowArray7int64_t"></span><span id="_CPPv220ArrowArrayAppendNullP10ArrowArray7int64_t"></span><span id="ArrowArrayAppendNull__ArrowArrayP.int64_t"></span><span class="target" id="nanoarrow_8h_1a7b4c3eb74f4bc6c6155599fb2658f927"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayAppendNull</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420ArrowArrayAppendNullP10ArrowArray7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Append a null value to an array. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419ArrowArrayAppendIntP10ArrowArray7int64_t">
+<span id="_CPPv319ArrowArrayAppendIntP10ArrowArray7int64_t"></span><span id="_CPPv219ArrowArrayAppendIntP10ArrowArray7int64_t"></span><span id="ArrowArrayAppendInt__ArrowArrayP.int64_t"></span><span class="target" id="nanoarrow_8h_1ac6b99a2b05db4c956def99131f803994"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayAppendInt</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419ArrowArrayAppendIntP10ArrowArray7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Append a signed integer value to an array. </p>
+<p>Returns NANOARROW_OK if value can be exactly represented by the underlying storage type or EINVAL otherwise (e.g., value is outside the valid array range). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420ArrowArrayAppendUIntP10ArrowArray8uint64_t">
+<span id="_CPPv320ArrowArrayAppendUIntP10ArrowArray8uint64_t"></span><span id="_CPPv220ArrowArrayAppendUIntP10ArrowArray8uint64_t"></span><span id="ArrowArrayAppendUInt__ArrowArrayP.uint64_t"></span><span class="target" id="nanoarrow_8h_1ae91f4c278859a8457b8090ca4dfd1e31"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayAppendUInt</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420ArrowArrayAppendUIntP10ArrowArray8uint64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Append an unsigned integer value to an array. </p>
+<p>Returns NANOARROW_OK if value can be exactly represented by the underlying storage type or EINVAL otherwise (e.g., value is outside the valid array range). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ArrowArrayAppendDoubleP10ArrowArrayd">
+<span id="_CPPv322ArrowArrayAppendDoubleP10ArrowArrayd"></span><span id="_CPPv222ArrowArrayAppendDoubleP10ArrowArrayd"></span><span id="ArrowArrayAppendDouble__ArrowArrayP.double"></span><span class="target" id="nanoarrow_8h_1a2e03258b386ed299928471394586b185"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayAppendDouble</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowArrayAppendDoubleP10ArrowArrayd" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Append a double value to an array. </p>
+<p>Returns NANOARROW_OK if value can be exactly represented by the underlying storage type or EINVAL otherwise (e.g., value is outside the valid array range or there is an attempt to append a non-integer to an array with an integer storage type). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421ArrowArrayAppendBytesP10ArrowArray15ArrowBufferView">
+<span id="_CPPv321ArrowArrayAppendBytesP10ArrowArray15ArrowBufferView"></span><span id="_CPPv221ArrowArrayAppendBytesP10ArrowArray15ArrowBufferView"></span><span id="ArrowArrayAppendBytes__ArrowArrayP.ArrowBufferView"></span><span class="target" id="nanoarrow_8h_1a40e1dce8b43124c9710538842e68f944"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayAppendBytes</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBufferView</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421ArrowArrayAppendBytesP10ArrowArray15ArrowBufferView" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Append a string of bytes to an array. </p>
+<p>Returns NANOARROW_OK if value can be exactly represented by the underlying storage type or EINVAL otherwise (e.g., the underlying array is not a binary, string, large binary, large string, or fixed-size binary array, or value is the wrong size for a fixed-size binary array). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ArrowArrayAppendStringP10ArrowArray15ArrowStringView">
+<span id="_CPPv322ArrowArrayAppendStringP10ArrowArray15ArrowStringView"></span><span id="_CPPv222ArrowArrayAppendStringP10ArrowArray15ArrowStringView"></span><span id="ArrowArrayAppendString__ArrowArrayP.ArrowStringView"></span><span class="target" id="nanoarrow_8h_1aa8c9118312eda7fc17fb6bf9d721ca9d"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayAppendString</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowArrayAppendStringP10ArrowArray15ArrowStringView" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Append a string value to an array Returns NANOARROW_OK if value can be exactly represented by the underlying storage type or EINVAL otherwise (e.g., the underlying array is not a string or large string array). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowArrayFinishElementP10ArrowArray">
+<span id="_CPPv323ArrowArrayFinishElementP10ArrowArray"></span><span id="_CPPv223ArrowArrayFinishElementP10ArrowArray"></span><span id="ArrowArrayFinishElement__ArrowArrayP"></span><span class="target" id="nanoarrow_8h_1a357c8828c0ae590c5ae26eac22cce485"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayFinishElement</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowArrayFinishElementP10ArrowArray" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Finish a nested array element. </p>
+<p>Appends a non-null element to the array based on the first child’s current length. Returns NANOARROW_OK if the item was successfully added or EINVAL if the underlying storage type is not a struct, list, large list, or fixed-size list, or if there was an attempt to add a struct or fixed-size list element where the length of the child array(s) did not match the expected length. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421ArrowArrayShrinkToFitP10ArrowArray">
+<span id="_CPPv321ArrowArrayShrinkToFitP10ArrowArray"></span><span id="_CPPv221ArrowArrayShrinkToFitP10ArrowArray"></span><span id="ArrowArrayShrinkToFit__ArrowArrayP"></span><span class="target" id="nanoarrow_8h_1aa6e5c94f307218fcc22578cacf07cf81"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayShrinkToFit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421ArrowArrayShrinkToFitP10ArrowArray" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Shrink buffer capacity to the size required. </p>
+<p>Also applies shrinking to any child arrays. array must have been allocated using ArrowArrayInit </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424ArrowArrayFinishBuildingP10ArrowArrayP10ArrowError">
+<span id="_CPPv324ArrowArrayFinishBuildingP10ArrowArrayP10ArrowError"></span><span id="_CPPv224ArrowArrayFinishBuildingP10ArrowArrayP10ArrowError"></span><span id="ArrowArrayFinishBuilding__ArrowArrayP.ArrowErrorP"></span><span class="target" id="nanoarrow_8h_1a830400ee3d4dc8cf64c5839a65bf3a34"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayFinishBuilding</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424ArrowArrayFinishBuildingP10ArrowArrayP10ArrowError" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Finish building an ArrowArray. </p>
+<p>Flushes any pointers from internal buffers that may have been reallocated into the array-&gt;buffers array and checks the actual size of the buffers against the expected size based on the final length. array must have been allocated using ArrowArrayInit </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418ArrowArrayViewInitP14ArrowArrayView9ArrowType">
+<span id="_CPPv318ArrowArrayViewInitP14ArrowArrayView9ArrowType"></span><span id="_CPPv218ArrowArrayViewInitP14ArrowArrayView9ArrowType"></span><span id="ArrowArrayViewInit__ArrowArrayViewP.ArrowType"></span><span class="target" id="nanoarrow_8h_1a1c72fe53a54f4429172d6256c2db478b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewInit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowType</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">storage_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418ArrowArrayViewInitP14ArrowArrayView9ArrowType" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize the contents of an ArrowArrayView. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428ArrowArrayViewInitFromSchemaP14ArrowArrayViewP11ArrowSchemaP10ArrowError">
+<span id="_CPPv328ArrowArrayViewInitFromSchemaP14ArrowArrayViewP11ArrowSchemaP10ArrowError"></span><span id="_CPPv228ArrowArrayViewInitFromSchemaP14ArrowArrayViewP11ArrowSchemaP10ArrowError"></span><span id="ArrowArrayViewInitFromSchema__ArrowArrayViewP.ArrowSchemaP.ArrowErrorP"></span><span class="target" id="nanoarrow_8h_1aaba0e72bc11b0696fef0260d1ecd554f"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewInitFromSchema</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">schema</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428ArrowArrayViewInitFromSchemaP14ArrowArrayViewP11ArrowSchemaP10ArrowError" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize the contents of an ArrowArrayView from an ArrowSchema. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430ArrowArrayViewAllocateChildrenP14ArrowArrayView7int64_t">
+<span id="_CPPv330ArrowArrayViewAllocateChildrenP14ArrowArrayView7int64_t"></span><span id="_CPPv230ArrowArrayViewAllocateChildrenP14ArrowArrayView7int64_t"></span><span id="ArrowArrayViewAllocateChildren__ArrowArrayViewP.int64_t"></span><span class="target" id="nanoarrow_8h_1a62b297db8007ff76852958f7d6301e8f"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewAllocateChildren</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n_children</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430ArrowArrayViewAllocateChildrenP14ArrowArrayView7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Allocate the schema_view-&gt;children array. </p>
+<p>Includes the memory for each child struct ArrowArrayView </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowArrayViewSetLengthP14ArrowArrayView7int64_t">
+<span id="_CPPv323ArrowArrayViewSetLengthP14ArrowArrayView7int64_t"></span><span id="_CPPv223ArrowArrayViewSetLengthP14ArrowArrayView7int64_t"></span><span id="ArrowArrayViewSetLength__ArrowArrayViewP.int64_t"></span><span class="target" id="nanoarrow_8h_1ae7f1bf5561a443f88801eae25c8c03fe"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewSetLength</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowArrayViewSetLengthP14ArrowArrayView7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Set data-independent buffer sizes from length. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ArrowArrayViewSetArrayP14ArrowArrayViewP10ArrowArrayP10ArrowError">
+<span id="_CPPv322ArrowArrayViewSetArrayP14ArrowArrayViewP10ArrowArrayP10ArrowError"></span><span id="_CPPv222ArrowArrayViewSetArrayP14ArrowArrayViewP10ArrowArrayP10ArrowError"></span><span id="ArrowArrayViewSetArray__ArrowArrayViewP.ArrowArrayP.ArrowErrorP"></span><span class="target" id="nanoarrow_8h_1ada04cd33265cf33ded2701fb1e365648"></span><span class="n"><span class="pre">ArrowErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewSetArray</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArray</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowArrayViewSetArrayP14ArrowArrayViewP10ArrowArrayP10ArrowError" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Set buffer sizes and data pointers from an ArrowArray. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419ArrowArrayViewResetP14ArrowArrayView">
+<span id="_CPPv319ArrowArrayViewResetP14ArrowArrayView"></span><span id="_CPPv219ArrowArrayViewResetP14ArrowArrayView"></span><span id="ArrowArrayViewReset__ArrowArrayViewP"></span><span class="target" id="nanoarrow_8h_1a983106893cf481272d96fb91dc6d724c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewReset</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419ArrowArrayViewResetP14ArrowArrayView" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Reset the contents of an ArrowArrayView and frees resources. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420ArrowArrayViewIsNullP14ArrowArrayView7int64_t">
+<span id="_CPPv320ArrowArrayViewIsNullP14ArrowArrayView7int64_t"></span><span id="_CPPv220ArrowArrayViewIsNullP14ArrowArrayView7int64_t"></span><span id="ArrowArrayViewIsNull__ArrowArrayViewP.int64_t"></span><span class="target" id="nanoarrow_8h_1a01e5b0b30fa58f2ee8c4a7507a74f020"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewIsNull</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420ArrowArrayViewIsNullP14ArrowArrayView7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Check for a null element in an ArrowArrayView. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426ArrowArrayViewGetIntUnsafeP14ArrowArrayView7int64_t">
+<span id="_CPPv326ArrowArrayViewGetIntUnsafeP14ArrowArrayView7int64_t"></span><span id="_CPPv226ArrowArrayViewGetIntUnsafeP14ArrowArrayView7int64_t"></span><span id="ArrowArrayViewGetIntUnsafe__ArrowArrayViewP.int64_t"></span><span class="target" id="nanoarrow_8h_1a116de101807afd81b0b5949f0141c785"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewGetIntUnsafe</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426ArrowArrayViewGetIntUnsafeP14ArrowArrayView7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Get an element in an ArrowArrayView as an integer. </p>
+<p>This function does not check for null values, that values are actually integers, or that values are within a valid range for an int64. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427ArrowArrayViewGetUIntUnsafeP14ArrowArrayView7int64_t">
+<span id="_CPPv327ArrowArrayViewGetUIntUnsafeP14ArrowArrayView7int64_t"></span><span id="_CPPv227ArrowArrayViewGetUIntUnsafeP14ArrowArrayView7int64_t"></span><span id="ArrowArrayViewGetUIntUnsafe__ArrowArrayViewP.int64_t"></span><span class="target" id="nanoarrow_8h_1a555c0b465f9c77eb26aa363102b11f19"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewGetUIntUnsafe</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427ArrowArrayViewGetUIntUnsafeP14ArrowArrayView7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Get an element in an ArrowArrayView as an unsigned integer. </p>
+<p>This function does not check for null values, that values are actually integers, or that values are within a valid range for a uint64. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429ArrowArrayViewGetDoubleUnsafeP14ArrowArrayView7int64_t">
+<span id="_CPPv329ArrowArrayViewGetDoubleUnsafeP14ArrowArrayView7int64_t"></span><span id="_CPPv229ArrowArrayViewGetDoubleUnsafeP14ArrowArrayView7int64_t"></span><span id="ArrowArrayViewGetDoubleUnsafe__ArrowArrayViewP.int64_t"></span><span class="target" id="nanoarrow_8h_1a4646cca89ab7fa8165989bc8bb76ad58"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewGetDoubleUnsafe</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429ArrowArrayViewGetDoubleUnsafeP14ArrowArrayView7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Get an element in an ArrowArrayView as a double. </p>
+<p>This function does not check for null values, or that values are within a valid range for a double. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429ArrowArrayViewGetStringUnsafeP14ArrowArrayView7int64_t">
+<span id="_CPPv329ArrowArrayViewGetStringUnsafeP14ArrowArrayView7int64_t"></span><span id="_CPPv229ArrowArrayViewGetStringUnsafeP14ArrowArrayView7int64_t"></span><span id="ArrowArrayViewGetStringUnsafe__ArrowArrayViewP.int64_t"></span><span class="target" id="nanoarrow_8h_1a4cf36aeb79f398c708f58c091cf3d1ef"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewGetStringUnsafe</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429ArrowArrayViewGetStringUnsafeP14ArrowArrayView7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Get an element in an ArrowArrayView as an ArrowStringView. </p>
+<p>This function does not check for null values. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428ArrowArrayViewGetBytesUnsafeP14ArrowArrayView7int64_t">
+<span id="_CPPv328ArrowArrayViewGetBytesUnsafeP14ArrowArrayView7int64_t"></span><span id="_CPPv228ArrowArrayViewGetBytesUnsafeP14ArrowArrayView7int64_t"></span><span id="ArrowArrayViewGetBytesUnsafe__ArrowArrayViewP.int64_t"></span><span class="target" id="nanoarrow_8h_1a6cb0bd30d8a95ff5dacf0232d401e512"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowBufferView</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewGetBytesUnsafe</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowArrayView</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428ArrowArrayViewGetBytesUnsafeP14ArrowArrayView7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Get an element in an ArrowArrayView as an ArrowBufferView. </p>
+<p>This function does not check for null values. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv410ArrowError">
+<span id="_CPPv310ArrowError"></span><span id="_CPPv210ArrowError"></span><span id="ArrowError"></span><span class="target" id="struct_arrow_error"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowError</span></span></span><a class="headerlink" href="#_CPPv410ArrowError" title="Permalink to this definition">#</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;nanoarrow.h&gt;</em></div>
+<p>Error type containing a UTF-8 encoded message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10ArrowError7messageE">
+<span id="_CPPv3N10ArrowError7messageE"></span><span id="_CPPv2N10ArrowError7messageE"></span><span id="ArrowError::message__cA"></span><span class="target" id="struct_arrow_error_1a2d28a3dfc0ad6376e30794b3adacd879"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">message</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">1024</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N10ArrowError7messageE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419ArrowMetadataReader">
+<span id="_CPPv319ArrowMetadataReader"></span><span id="_CPPv219ArrowMetadataReader"></span><span id="ArrowMetadataReader"></span><span class="target" id="struct_arrow_metadata_reader"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowMetadataReader</span></span></span><a class="headerlink" href="#_CPPv419ArrowMetadataReader" title="Permalink to this definition">#</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;nanoarrow.h&gt;</em></div>
+<p>Reader for key/value pairs in schema metadata. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArrowMetadataReader8metadataE">
+<span id="_CPPv3N19ArrowMetadataReader8metadataE"></span><span id="_CPPv2N19ArrowMetadataReader8metadataE"></span><span id="ArrowMetadataReader::metadata__cCP"></span><span class="target" id="struct_arrow_metadata_reader_1ae5ab9868587ac1b569db827307cb9284"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">metadata</span></span></span><a class="headerlink" href="#_CPPv4N19ArrowMetadataReader8metadataE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArrowMetadataReader6offsetE">
+<span id="_CPPv3N19ArrowMetadataReader6offsetE"></span><span id="_CPPv2N19ArrowMetadataReader6offsetE"></span><span id="ArrowMetadataReader::offset__int64_t"></span><span class="target" id="struct_arrow_metadata_reader_1a80cec1f7461778444d67b9a44bb5b5c0"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">offset</span></span></span><a class="headerlink" href="#_CPPv4N19ArrowMetadataReader6offsetE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArrowMetadataReader14remaining_keysE">
+<span id="_CPPv3N19ArrowMetadataReader14remaining_keysE"></span><span id="_CPPv2N19ArrowMetadataReader14remaining_keysE"></span><span id="ArrowMetadataReader::remaining_keys__int32_t"></span><span class="target" id="struct_arrow_metadata_reader_1a9f5901986ea3343e0648b3abf155bfc3"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">remaining_keys</span></span></span><a class="headerlink" href="#_CPPv4N19ArrowMetadataReader14remaining_keysE" title="Permalink to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv415ArrowSchemaView">
+<span id="_CPPv315ArrowSchemaView"></span><span id="_CPPv215ArrowSchemaView"></span><span id="ArrowSchemaView"></span><span class="target" id="struct_arrow_schema_view"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowSchemaView</span></span></span><a class="headerlink" href="#_CPPv415ArrowSchemaView" title="Permalink to this definition">#</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;nanoarrow.h&gt;</em></div>
+<p>A non-owning view of a parsed ArrowSchema. </p>
+<p>Contains more readily extractable values than a raw ArrowSchema. Clients can stack or statically allocate this structure but are encouraged to use the provided getters to ensure forward compatiblity. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView6schemaE">
+<span id="_CPPv3N15ArrowSchemaView6schemaE"></span><span id="_CPPv2N15ArrowSchemaView6schemaE"></span><span id="ArrowSchemaView::schema__ArrowSchemaP"></span><span class="target" id="struct_arrow_schema_view_1a57cab09d0c332eaf55d4886d600ecd6a"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowSchema</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">schema</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView6schemaE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>A pointer to the schema represented by this view. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView9data_typeE">
+<span id="_CPPv3N15ArrowSchemaView9data_typeE"></span><span id="_CPPv2N15ArrowSchemaView9data_typeE"></span><span id="ArrowSchemaView::data_type__ArrowType"></span><span class="target" id="struct_arrow_schema_view_1aa0c2f0c6a651233903fb071fe8d8f791"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_type</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView9data_typeE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>The data type represented by the schema. </p>
+<p>This value may be NANOARROW_TYPE_DICTIONARY if the schema has a non-null dictionary member; datetime types are valid values. This value will never be NANOARROW_TYPE_EXTENSION (see extension_name and/or extension_metadata to check for an extension type). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView17storage_data_typeE">
+<span id="_CPPv3N15ArrowSchemaView17storage_data_typeE"></span><span id="_CPPv2N15ArrowSchemaView17storage_data_typeE"></span><span id="ArrowSchemaView::storage_data_type__ArrowType"></span><span class="target" id="struct_arrow_schema_view_1a0fc551e40ea8c4c5bef551175a17ce13"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">storage_data_type</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView17storage_data_typeE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>The storage data type represented by the schema. </p>
+<p>This value will never be NANOARROW_TYPE_DICTIONARY, NANOARROW_TYPE_EXTENSION or any datetime type. This value represents only the type required to interpret the buffers in the array. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView6layoutE">
+<span id="_CPPv3N15ArrowSchemaView6layoutE"></span><span id="_CPPv2N15ArrowSchemaView6layoutE"></span><span id="ArrowSchemaView::layout__ArrowLayout"></span><span class="target" id="struct_arrow_schema_view_1ada30de73dfb00c14bf9d9d14ad38d327"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowLayout</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">layout</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView6layoutE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>The storage layout represented by the schema. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView14extension_nameE">
+<span id="_CPPv3N15ArrowSchemaView14extension_nameE"></span><span id="_CPPv2N15ArrowSchemaView14extension_nameE"></span><span id="ArrowSchemaView::extension_name__ArrowStringView"></span><span class="target" id="struct_arrow_schema_view_1a0d085aea742e822502485445e580dea2"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">extension_name</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView14extension_nameE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>The extension type name if it exists. </p>
+<p>If the ARROW:extension:name key is present in schema.metadata, extension_name.data will be non-NULL. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView18extension_metadataE">
+<span id="_CPPv3N15ArrowSchemaView18extension_metadataE"></span><span id="_CPPv2N15ArrowSchemaView18extension_metadataE"></span><span id="ArrowSchemaView::extension_metadata__ArrowStringView"></span><span class="target" id="struct_arrow_schema_view_1afb68ff6039541facdc3afb61c9acd558"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">extension_metadata</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView18extension_metadataE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>The extension type metadata if it exists. </p>
+<p>If the ARROW:extension:metadata key is present in schema.metadata, extension_metadata.data will be non-NULL. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView10fixed_sizeE">
+<span id="_CPPv3N15ArrowSchemaView10fixed_sizeE"></span><span id="_CPPv2N15ArrowSchemaView10fixed_sizeE"></span><span id="ArrowSchemaView::fixed_size__int32_t"></span><span class="target" id="struct_arrow_schema_view_1ab74f333f4ab5889a4d5b6352a9e8acd9"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fixed_size</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView10fixed_sizeE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Format fixed size parameter. </p>
+<p>This value is set when parsing a fixed-size binary or fixed-size list schema; this value is undefined for other types. For a fixed-size binary schema this value is in bytes; for a fixed-size list schema this value refers to the number of child elements for each element of the parent. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView16decimal_bitwidthE">
+<span id="_CPPv3N15ArrowSchemaView16decimal_bitwidthE"></span><span id="_CPPv2N15ArrowSchemaView16decimal_bitwidthE"></span><span id="ArrowSchemaView::decimal_bitwidth__int32_t"></span><span class="target" id="struct_arrow_schema_view_1a7d632b171c76ca184d4a50f144dd16a0"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decimal_bitwidth</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView16decimal_bitwidthE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Decimal bitwidth. </p>
+<p>This value is set when parsing a decimal type schema; this value is undefined for other types. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView17decimal_precisionE">
+<span id="_CPPv3N15ArrowSchemaView17decimal_precisionE"></span><span id="_CPPv2N15ArrowSchemaView17decimal_precisionE"></span><span id="ArrowSchemaView::decimal_precision__int32_t"></span><span class="target" id="struct_arrow_schema_view_1a1cc325480d15c9823e6860b4caacb697"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decimal_precision</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView17decimal_precisionE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Decimal precision. </p>
+<p>This value is set when parsing a decimal type schema; this value is undefined for other types. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView13decimal_scaleE">
+<span id="_CPPv3N15ArrowSchemaView13decimal_scaleE"></span><span id="_CPPv2N15ArrowSchemaView13decimal_scaleE"></span><span id="ArrowSchemaView::decimal_scale__int32_t"></span><span class="target" id="struct_arrow_schema_view_1a138e714b344e2bd3b5d1427ca38221aa"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decimal_scale</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView13decimal_scaleE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Decimal scale. </p>
+<p>This value is set when parsing a decimal type schema; this value is undefined for other types. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView9time_unitE">
+<span id="_CPPv3N15ArrowSchemaView9time_unitE"></span><span id="_CPPv2N15ArrowSchemaView9time_unitE"></span><span id="ArrowSchemaView::time_unit__ArrowTimeUnit"></span><span class="target" id="struct_arrow_schema_view_1a51df746b957ea34af6128a111bd5e43e"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413ArrowTimeUnit" title="ArrowTimeUnit"><span class="n"><span class="pre">ArrowTimeUnit</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">time_unit</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView9time_unitE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Format time unit parameter. </p>
+<p>This value is set when parsing a date/time type. The value is undefined for other types. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView8timezoneE">
+<span id="_CPPv3N15ArrowSchemaView8timezoneE"></span><span id="_CPPv2N15ArrowSchemaView8timezoneE"></span><span id="ArrowSchemaView::timezone__ArrowStringView"></span><span class="target" id="struct_arrow_schema_view_1a7b3741760b3b6259d1277d50e163ea63"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timezone</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView8timezoneE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Format timezone parameter. </p>
+<p>This value is set when parsing a timestamp type and represents the timezone format parameter. The ArrowStrintgView points to data within the schema and the value is undefined for other types. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15ArrowSchemaView14union_type_idsE">
+<span id="_CPPv3N15ArrowSchemaView14union_type_idsE"></span><span id="_CPPv2N15ArrowSchemaView14union_type_idsE"></span><span id="ArrowSchemaView::union_type_ids__ArrowStringView"></span><span class="target" id="struct_arrow_schema_view_1ab58d468e05f51aba4d4633b32853147a"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ArrowStringView</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">union_type_ids</span></span></span><a class="headerlink" href="#_CPPv4N15ArrowSchemaView14union_type_idsE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Union type ids parameter. </p>
+<p>This value is set when parsing a union type and represents type ids parameter. The ArrowStringView points to data within the schema and the value is undefined for other types. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">nanoarrow</p>
+      </div>
+  </a>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2016-2022 Apache Software Foundation.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>
