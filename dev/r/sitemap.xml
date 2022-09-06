@@ -13,6 +13,15 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/as_nanoarrow_array.html</loc>
+  </url>
+  <url>
+    <loc>/reference/as_nanoarrow_array_stream.html</loc>
+  </url>
+  <url>
+    <loc>/reference/as_nanoarrow_schema.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
@@ -20,5 +29,8 @@
   </url>
   <url>
     <loc>/reference/nanoarrow_build_id.html</loc>
+  </url>
+  <url>
+    <loc>/reference/nanoarrow_pointer_is_valid.html</loc>
   </url>
 </urlset>
