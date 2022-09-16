@@ -99,6 +99,49 @@ should be converted.</p></dd>
 <p>An object of class 'nanoarrow_array'</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">(</span><span class="va">array</span> <span class="op">&lt;-</span> <span class="fu">as_nanoarrow_array</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;nanoarrow_array i[5]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ length    : int 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ null_count: int 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ offset    : int 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ buffers   :List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :&lt;nanoarrow_buffer_validity[0 b] at (nil)&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :&lt;nanoarrow_buffer_data_int32[20 b] at 0x562023e54e78&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ dictionary: NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ children  : list()</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">as.vector</a></span><span class="op">(</span><span class="va">array</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 2 3 4 5</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">array</span> <span class="op">&lt;-</span> <span class="fu">as_nanoarrow_array</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;nanoarrow_array +s[5]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ length    : int 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ null_count: int 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ offset    : int 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ buffers   :List of 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :&lt;nanoarrow_buffer_validity[0 b] at (nil)&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ children  :List of 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ x:&lt;nanoarrow_array i[5]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ length    : int 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ null_count: int 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ offset    : int 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ buffers   :List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ :&lt;nanoarrow_buffer_validity[0 b] at (nil)&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ :&lt;nanoarrow_buffer_data_int32[20 b] at 0x562024f56f28&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ dictionary: NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ children  : list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ dictionary: NULL</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">array</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   x</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 5</span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
