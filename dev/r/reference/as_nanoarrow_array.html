@@ -63,9 +63,7 @@ are represented identically.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as_nanoarrow_array</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, schema <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">from_nanoarrow_array</span><span class="op">(</span><span class="va">array</span>, to <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as_nanoarrow_array</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, schema <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -81,15 +79,6 @@ are represented identically.</p>
 <dt>schema</dt>
 <dd><p>An optional schema used to enforce conversion to a particular
 type. Defaults to <code><a href="as_nanoarrow_schema.html">infer_nanoarrow_schema()</a></code>.</p></dd>
-
-
-<dt>array</dt>
-<dd><p>An object of class 'nanoarrow_array'</p></dd>
-
-
-<dt>to</dt>
-<dd><p>A target prototype object describing the type to which <code>array</code>
-should be converted.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -108,7 +97,7 @@ should be converted.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ offset    : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ buffers   :List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :&lt;nanoarrow_buffer_validity[0 b] at (nil)&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :&lt;nanoarrow_buffer_data_int32[20 b] at 0x559923876c98&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :&lt;nanoarrow_buffer_data_int32[20 b] at 0x55cebf265f48&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ dictionary: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ children  : list()</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">as.vector</a></span><span class="op">(</span><span class="va">array</span><span class="op">)</span></span></span>
@@ -128,7 +117,7 @@ should be converted.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ offset    : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ buffers   :List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ :&lt;nanoarrow_buffer_validity[0 b] at (nil)&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ :&lt;nanoarrow_buffer_data_int32[20 b] at 0x5599235d7a28&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ :&lt;nanoarrow_buffer_data_int32[20 b] at 0x55cebec252f8&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ dictionary: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ children  : list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ dictionary: NULL</span>
