@@ -12,8 +12,8 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=9b1a4fa89bdd0e95b23b" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=9b1a4fa89bdd0e95b23b" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
 
   
   <link rel="stylesheet"
@@ -22,11 +22,13 @@
     href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=9b1a4fa89bdd0e95b23b">
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -58,7 +60,7 @@
     <div class="search-button__search-container">
       
 <form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
+  <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
@@ -68,7 +70,7 @@
   
   <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
   <label class="sidebar-toggle primary-toggle" for="__primary">
-      <span class="fas fa-bars"></span>
+      <span class="fa-solid fa-bars"></span>
   </label>
   <div id="navbar-start">
     
@@ -107,13 +109,13 @@
         
                 <li class="nav-item">
                     <a class="nav-link" href="c.html">
-                        C API
+                        C API Reference
                     </a>
                 </li>
                 
 
             <li class="nav-item">
-                <a class="nav-link nav-external" href="r/index.html">R API<i class="fas fa-external-link-alt"></i></a>
+                <a class="nav-link nav-external" href="r/index.html">R Package<i class="fa-solid fa-up-right-from-square"></i></a>
             </li>
     </ul>
 </nav>
@@ -124,16 +126,16 @@
     <div id="navbar-end">
       <div class="navbar-end-item navbar-end__search-button-container">
         
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search">
-  <i class="fas fa-search"></i>
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
 </button>
       </div>
       
       <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle">
-    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
 </span>
       </div>
       
@@ -148,14 +150,14 @@
 
   
   <div class="search-button-container--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search">
-  <i class="fas fa-search"></i>
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
 </button>
   </div>
 
   
   <label class="sidebar-toggle secondary-toggle" for="__secondary">
-      <span class="fas fa-outdent"></span>
+      <span class="fa-solid fa-outdent"></span>
   </label>
   
 
@@ -183,13 +185,13 @@
         
                 <li class="nav-item">
                     <a class="nav-link" href="c.html">
-                        C API
+                        C API Reference
                     </a>
                 </li>
                 
 
             <li class="nav-item">
-                <a class="nav-link nav-external" href="r/index.html">R API<i class="fas fa-external-link-alt"></i></a>
+                <a class="nav-link nav-external" href="r/index.html">R Package<i class="fa-solid fa-up-right-from-square"></i></a>
             </li>
     </ul>
 </nav>
@@ -203,10 +205,10 @@
     <div class="sidebar-header-items__end">
       
       <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle">
-    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
 </span>
       </div>
       
@@ -223,7 +225,7 @@
   <div class="sidebar-start-items sidebar-primary__section">
     <div class="sidebar-start-items__item">
 <form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
+  <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
@@ -256,6 +258,7 @@
 
 <div class="genindex-jumpbox">
  <a href="#A"><strong>A</strong></a>
+ | <a href="#N"><strong>N</strong></a>
  
 </div>
 <h2 id="A">A</h2>
@@ -299,6 +302,20 @@
 </li>
       <li><a href="c.html#_CPPv424ArrowArrayValidityBitmapP10ArrowArray">ArrowArrayValidityBitmap (C++ function)</a>
 </li>
+      <li><a href="c.html#_CPPv414ArrowArrayView">ArrowArrayView (C++ struct)</a>
+</li>
+      <li><a href="c.html#_CPPv4N14ArrowArrayView5arrayE">ArrowArrayView::array (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N14ArrowArrayView12buffer_viewsE">ArrowArrayView::buffer_views (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N14ArrowArrayView8childrenE">ArrowArrayView::children (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N14ArrowArrayView6layoutE">ArrowArrayView::layout (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N14ArrowArrayView10n_childrenE">ArrowArrayView::n_children (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N14ArrowArrayView12storage_typeE">ArrowArrayView::storage_type (C++ member)</a>
+</li>
       <li><a href="c.html#_CPPv430ArrowArrayViewAllocateChildrenP14ArrowArrayView7int64_t">ArrowArrayViewAllocateChildren (C++ function)</a>
 </li>
       <li><a href="c.html#_CPPv428ArrowArrayViewGetBytesUnsafeP14ArrowArrayView7int64_t">ArrowArrayViewGetBytesUnsafe (C++ function)</a>
@@ -329,6 +346,12 @@
 </li>
       <li><a href="c.html#_CPPv411ArrowBitGetPK7uint8_t7int64_t">ArrowBitGet (C++ function)</a>
 </li>
+      <li><a href="c.html#_CPPv411ArrowBitmap">ArrowBitmap (C++ struct)</a>
+</li>
+      <li><a href="c.html#_CPPv4N11ArrowBitmap6bufferE">ArrowBitmap::buffer (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N11ArrowBitmap9size_bitsE">ArrowBitmap::size_bits (C++ member)</a>
+</li>
       <li><a href="c.html#_CPPv417ArrowBitmapAppendP11ArrowBitmap7uint8_t7int64_t">ArrowBitmapAppend (C++ function)</a>
 </li>
       <li><a href="c.html#_CPPv428ArrowBitmapAppendInt32UnsafeP11ArrowBitmapPK7int32_t7int64_t">ArrowBitmapAppendInt32Unsafe (C++ function)</a>
@@ -350,6 +373,24 @@
       <li><a href="c.html#_CPPv413ArrowBitSetToP7uint8_t7int64_t7uint8_t">ArrowBitSetTo (C++ function)</a>
 </li>
       <li><a href="c.html#_CPPv414ArrowBitsSetToP7uint8_t7int64_t7int64_t7uint8_t">ArrowBitsSetTo (C++ function)</a>
+</li>
+      <li><a href="c.html#_CPPv411ArrowBuffer">ArrowBuffer (C++ struct)</a>
+</li>
+      <li><a href="c.html#_CPPv4N11ArrowBuffer9allocatorE">ArrowBuffer::allocator (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N11ArrowBuffer14capacity_bytesE">ArrowBuffer::capacity_bytes (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N11ArrowBuffer4dataE">ArrowBuffer::data (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N11ArrowBuffer10size_bytesE">ArrowBuffer::size_bytes (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv420ArrowBufferAllocator">ArrowBufferAllocator (C++ struct)</a>
+</li>
+      <li><a href="c.html#_CPPv4N20ArrowBufferAllocator4freeE">ArrowBufferAllocator::free (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N20ArrowBufferAllocator12private_dataE">ArrowBufferAllocator::private_data (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N20ArrowBufferAllocator10reallocateE">ArrowBufferAllocator::reallocate (C++ member)</a>
 </li>
       <li><a href="c.html#_CPPv427ArrowBufferAllocatorDefaultv">ArrowBufferAllocatorDefault (C++ function)</a>
 </li>
@@ -379,8 +420,6 @@
 </li>
       <li><a href="c.html#_CPPv423ArrowBufferAppendUnsafeP11ArrowBufferPKv7int64_t">ArrowBufferAppendUnsafe (C++ function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="c.html#_CPPv422ArrowBufferDeallocatorPFvP20ArrowBufferAllocatorP7uint8_t7int64_tEPv">ArrowBufferDeallocator (C++ function)</a>
 </li>
       <li><a href="c.html#_CPPv415ArrowBufferInitP11ArrowBuffer">ArrowBufferInit (C++ function)</a>
@@ -395,17 +434,49 @@
 </li>
       <li><a href="c.html#_CPPv423ArrowBufferSetAllocatorP11ArrowBuffer20ArrowBufferAllocator">ArrowBufferSetAllocator (C++ function)</a>
 </li>
+      <li><a href="c.html#_CPPv415ArrowBufferType">ArrowBufferType (C++ enum)</a>
+</li>
+      <li><a href="c.html#_CPPv4N15ArrowBufferType26NANOARROW_BUFFER_TYPE_DATAE">ArrowBufferType::NANOARROW_BUFFER_TYPE_DATA (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N15ArrowBufferType33NANOARROW_BUFFER_TYPE_DATA_OFFSETE">ArrowBufferType::NANOARROW_BUFFER_TYPE_DATA_OFFSET (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N15ArrowBufferType26NANOARROW_BUFFER_TYPE_NONEE">ArrowBufferType::NANOARROW_BUFFER_TYPE_NONE (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N15ArrowBufferType29NANOARROW_BUFFER_TYPE_TYPE_IDE">ArrowBufferType::NANOARROW_BUFFER_TYPE_TYPE_ID (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N15ArrowBufferType34NANOARROW_BUFFER_TYPE_UNION_OFFSETE">ArrowBufferType::NANOARROW_BUFFER_TYPE_UNION_OFFSET (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N15ArrowBufferType30NANOARROW_BUFFER_TYPE_VALIDITYE">ArrowBufferType::NANOARROW_BUFFER_TYPE_VALIDITY (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv415ArrowBufferView">ArrowBufferView (C++ struct)</a>
+</li>
+      <li><a href="c.html#_CPPv4N15ArrowBufferView4dataE">ArrowBufferView::data (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N15ArrowBufferView7n_bytesE">ArrowBufferView::n_bytes (C++ member)</a>
+</li>
       <li><a href="c.html#_CPPv413ArrowCharViewPKc">ArrowCharView (C++ function)</a>
 </li>
       <li><a href="c.html#_CPPv410ArrowError">ArrowError (C++ struct)</a>
 </li>
       <li><a href="c.html#_CPPv4N10ArrowError7messageE">ArrowError::message (C++ member)</a>
 </li>
+      <li><a href="c.html#_CPPv414ArrowErrorCode">ArrowErrorCode (C++ type)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="c.html#_CPPv417ArrowErrorMessageP10ArrowError">ArrowErrorMessage (C++ function)</a>
 </li>
       <li><a href="c.html#_CPPv413ArrowErrorSetP10ArrowErrorPKcz">ArrowErrorSet (C++ function)</a>
 </li>
       <li><a href="c.html#_CPPv49ArrowFreePv">ArrowFree (C++ function)</a>
+</li>
+      <li><a href="c.html#_CPPv411ArrowLayout">ArrowLayout (C++ struct)</a>
+</li>
+      <li><a href="c.html#_CPPv4N11ArrowLayout11buffer_typeE">ArrowLayout::buffer_type (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N11ArrowLayout19child_size_elementsE">ArrowLayout::child_size_elements (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N11ArrowLayout17element_size_bitsE">ArrowLayout::element_size_bits (C++ member)</a>
 </li>
       <li><a href="c.html#_CPPv415ArrowLayoutInitP11ArrowLayout9ArrowType">ArrowLayoutInit (C++ function)</a>
 </li>
@@ -461,6 +532,8 @@
 </li>
       <li><a href="c.html#_CPPv418ArrowSchemaSetNameP11ArrowSchemaPKc">ArrowSchemaSetName (C++ function)</a>
 </li>
+      <li><a href="c.html#_CPPv419ArrowSchemaToStringP11ArrowSchemaPc7int64_tc">ArrowSchemaToString (C++ function)</a>
+</li>
       <li><a href="c.html#_CPPv415ArrowSchemaView">ArrowSchemaView (C++ struct)</a>
 </li>
       <li><a href="c.html#_CPPv4N15ArrowSchemaView9data_typeE">ArrowSchemaView::data_type (C++ member)</a>
@@ -491,6 +564,12 @@
 </li>
       <li><a href="c.html#_CPPv419ArrowSchemaViewInitP15ArrowSchemaViewP11ArrowSchemaP10ArrowError">ArrowSchemaViewInit (C++ function)</a>
 </li>
+      <li><a href="c.html#_CPPv415ArrowStringView">ArrowStringView (C++ struct)</a>
+</li>
+      <li><a href="c.html#_CPPv4N15ArrowStringView4dataE">ArrowStringView::data (C++ member)</a>
+</li>
+      <li><a href="c.html#_CPPv4N15ArrowStringView7n_bytesE">ArrowStringView::n_bytes (C++ member)</a>
+</li>
       <li><a href="c.html#_CPPv413ArrowTimeUnit">ArrowTimeUnit (C++ enum)</a>
 </li>
       <li><a href="c.html#_CPPv4N13ArrowTimeUnit25NANOARROW_TIME_UNIT_MICROE">ArrowTimeUnit::NANOARROW_TIME_UNIT_MICRO (C++ enumerator)</a>
@@ -500,6 +579,102 @@
       <li><a href="c.html#_CPPv4N13ArrowTimeUnit24NANOARROW_TIME_UNIT_NANOE">ArrowTimeUnit::NANOARROW_TIME_UNIT_NANO (C++ enumerator)</a>
 </li>
       <li><a href="c.html#_CPPv4N13ArrowTimeUnit26NANOARROW_TIME_UNIT_SECONDE">ArrowTimeUnit::NANOARROW_TIME_UNIT_SECOND (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv419ArrowTimeUnitString13ArrowTimeUnit">ArrowTimeUnitString (C++ function)</a>
+</li>
+      <li><a href="c.html#_CPPv49ArrowType">ArrowType (C++ enum)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType21NANOARROW_TYPE_BINARYE">ArrowType::NANOARROW_TYPE_BINARY (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType19NANOARROW_TYPE_BOOLE">ArrowType::NANOARROW_TYPE_BOOL (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType21NANOARROW_TYPE_DATE32E">ArrowType::NANOARROW_TYPE_DATE32 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType21NANOARROW_TYPE_DATE64E">ArrowType::NANOARROW_TYPE_DATE64 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType25NANOARROW_TYPE_DECIMAL128E">ArrowType::NANOARROW_TYPE_DECIMAL128 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType25NANOARROW_TYPE_DECIMAL256E">ArrowType::NANOARROW_TYPE_DECIMAL256 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType26NANOARROW_TYPE_DENSE_UNIONE">ArrowType::NANOARROW_TYPE_DENSE_UNION (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType25NANOARROW_TYPE_DICTIONARYE">ArrowType::NANOARROW_TYPE_DICTIONARY (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType21NANOARROW_TYPE_DOUBLEE">ArrowType::NANOARROW_TYPE_DOUBLE (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType23NANOARROW_TYPE_DURATIONE">ArrowType::NANOARROW_TYPE_DURATION (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType24NANOARROW_TYPE_EXTENSIONE">ArrowType::NANOARROW_TYPE_EXTENSION (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType32NANOARROW_TYPE_FIXED_SIZE_BINARYE">ArrowType::NANOARROW_TYPE_FIXED_SIZE_BINARY (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType30NANOARROW_TYPE_FIXED_SIZE_LISTE">ArrowType::NANOARROW_TYPE_FIXED_SIZE_LIST (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType20NANOARROW_TYPE_FLOATE">ArrowType::NANOARROW_TYPE_FLOAT (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType25NANOARROW_TYPE_HALF_FLOATE">ArrowType::NANOARROW_TYPE_HALF_FLOAT (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType20NANOARROW_TYPE_INT16E">ArrowType::NANOARROW_TYPE_INT16 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType20NANOARROW_TYPE_INT32E">ArrowType::NANOARROW_TYPE_INT32 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType20NANOARROW_TYPE_INT64E">ArrowType::NANOARROW_TYPE_INT64 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType19NANOARROW_TYPE_INT8E">ArrowType::NANOARROW_TYPE_INT8 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType32NANOARROW_TYPE_INTERVAL_DAY_TIMEE">ArrowType::NANOARROW_TYPE_INTERVAL_DAY_TIME (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType38NANOARROW_TYPE_INTERVAL_MONTH_DAY_NANOE">ArrowType::NANOARROW_TYPE_INTERVAL_MONTH_DAY_NANO (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType30NANOARROW_TYPE_INTERVAL_MONTHSE">ArrowType::NANOARROW_TYPE_INTERVAL_MONTHS (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType27NANOARROW_TYPE_LARGE_BINARYE">ArrowType::NANOARROW_TYPE_LARGE_BINARY (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType25NANOARROW_TYPE_LARGE_LISTE">ArrowType::NANOARROW_TYPE_LARGE_LIST (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType27NANOARROW_TYPE_LARGE_STRINGE">ArrowType::NANOARROW_TYPE_LARGE_STRING (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType19NANOARROW_TYPE_LISTE">ArrowType::NANOARROW_TYPE_LIST (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType18NANOARROW_TYPE_MAPE">ArrowType::NANOARROW_TYPE_MAP (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType17NANOARROW_TYPE_NAE">ArrowType::NANOARROW_TYPE_NA (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType27NANOARROW_TYPE_SPARSE_UNIONE">ArrowType::NANOARROW_TYPE_SPARSE_UNION (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType21NANOARROW_TYPE_STRINGE">ArrowType::NANOARROW_TYPE_STRING (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType21NANOARROW_TYPE_STRUCTE">ArrowType::NANOARROW_TYPE_STRUCT (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType21NANOARROW_TYPE_TIME32E">ArrowType::NANOARROW_TYPE_TIME32 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType21NANOARROW_TYPE_TIME64E">ArrowType::NANOARROW_TYPE_TIME64 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType24NANOARROW_TYPE_TIMESTAMPE">ArrowType::NANOARROW_TYPE_TIMESTAMP (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType21NANOARROW_TYPE_UINT16E">ArrowType::NANOARROW_TYPE_UINT16 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType21NANOARROW_TYPE_UINT32E">ArrowType::NANOARROW_TYPE_UINT32 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType21NANOARROW_TYPE_UINT64E">ArrowType::NANOARROW_TYPE_UINT64 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType20NANOARROW_TYPE_UINT8E">ArrowType::NANOARROW_TYPE_UINT8 (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv4N9ArrowType28NANOARROW_TYPE_UNINITIALIZEDE">ArrowType::NANOARROW_TYPE_UNINITIALIZED (C++ enumerator)</a>
+</li>
+      <li><a href="c.html#_CPPv415ArrowTypeString9ArrowType">ArrowTypeString (C++ function)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="c.html#c.NANOARROW_OK">NANOARROW_OK (C macro)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="c.html#c.NANOARROW_RETURN_NOT_OK">NANOARROW_RETURN_NOT_OK (C macro)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -522,6 +697,11 @@
           
             <div class="bd-sidebar-secondary bd-toc">
               
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
 <div class="toc-item">
   
 </div>
@@ -547,7 +727,7 @@
   
     
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=9b1a4fa89bdd0e95b23b"></script>
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
 
   <footer class="bd-footer"><div class="bd-footer__inner container">
   
@@ -564,7 +744,7 @@
   <div class="footer-item">
     
 <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.2.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
 
   </div>

@@ -100,19 +100,19 @@ type. Defaults to <code><a href="as_nanoarrow_schema.html">infer_nanoarrow_schem
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="op">(</span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu">as_nanoarrow_array_stream</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;nanoarrow_array_stream[+s]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;nanoarrow_array_stream struct&lt;x: int32&gt;&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ get_schema:function ()  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ release   :function ()  </span>
 <span class="r-in"><span><span class="va">stream</span><span class="op">$</span><span class="fu">get_schema</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;nanoarrow_schema[+s]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;nanoarrow_schema struct&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ format    : chr "+s"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ name      : chr ""</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ metadata  :List of 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ r: chr "A\n3\n262657\n197888\n5\nUTF-8\n531\n2\n531\n1\n16\n1\n262153\n10\ndata.frame\n1026\n1\n262153\n5\nnames\n16\n1"| __truncated__</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ flags     : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ children  :List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ x:&lt;nanoarrow_schema[i]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ x:&lt;nanoarrow_schema int32&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ format    : chr "i"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ name      : chr "x"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ metadata  : list()</span>
@@ -121,20 +121,20 @@ type. Defaults to <code><a href="as_nanoarrow_schema.html">infer_nanoarrow_schem
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ dictionary: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ dictionary: NULL</span>
 <span class="r-in"><span><span class="va">stream</span><span class="op">$</span><span class="fu">get_next</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;nanoarrow_array +s[5]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;nanoarrow_array struct[5]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ length    : int 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ null_count: int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ offset    : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ buffers   :List of 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ :&lt;nanoarrow_buffer_validity[0 b] at (nil)&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ children  :List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ x:&lt;nanoarrow_array i[5]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ x:&lt;nanoarrow_array int32[5]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ length    : int 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ null_count: int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ offset    : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ buffers   :List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ :&lt;nanoarrow_buffer_validity[0 b] at (nil)&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ :&lt;nanoarrow_buffer_data_int32[20 b] at 0x561d62246a48&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. .. ..$ :&lt;nanoarrow_buffer_data_int32[20 b] at 0x55dc2e9d7388&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ dictionary: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ children  : list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ dictionary: NULL</span>
