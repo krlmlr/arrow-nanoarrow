@@ -22,10 +22,16 @@
     <loc>/reference/as_nanoarrow_schema.html</loc>
   </url>
   <url>
-    <loc>/reference/from_nanoarrow_array.html</loc>
+    <loc>/reference/convert_array.html</loc>
+  </url>
+  <url>
+    <loc>/reference/convert_array_stream.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/infer_nanoarrow_ptype.html</loc>
   </url>
   <url>
     <loc>/reference/nanoarrow-package.html</loc>
