@@ -327,54 +327,54 @@ distribution available in the dist/ directory in this repository.
 Examples of both can be found in the examples/ directory in this
 repository.</p>
 <p>A simple producer example:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;nanoarrow.h&quot;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;nanoarrow.h&quot;</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">make_simple_array</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowArray</span><span class="o">*</span><span class="w"> </span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowSchema</span><span class="o">*</span><span class="w"> </span><span class="n">schema_out</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowError</span><span class="w"> </span><span class="n">error</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">array_out</span><span class="o">-&gt;</span><span class="n">release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">schema_out</span><span class="o">-&gt;</span><span class="n">release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">make_simple_array</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowArray</span><span class="o">*</span><span class="w"> </span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowSchema</span><span class="o">*</span><span class="w"> </span><span class="n">schema_out</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowError</span><span class="w"> </span><span class="n">error</span><span class="p">;</span>
+<span class="w">  </span><span class="n">array_out</span><span class="o">-&gt;</span><span class="n">release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">  </span><span class="n">schema_out</span><span class="o">-&gt;</span><span class="n">release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
 
-<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayInit</span><span class="p">(</span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="n">NANOARROW_TYPE_INT32</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayInit</span><span class="p">(</span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="n">NANOARROW_TYPE_INT32</span><span class="p">));</span>
 
-<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayStartAppending</span><span class="p">(</span><span class="n">array_out</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayAppendInt</span><span class="p">(</span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayAppendInt</span><span class="p">(</span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayAppendInt</span><span class="p">(</span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayFinishBuilding</span><span class="p">(</span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">error</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayStartAppending</span><span class="p">(</span><span class="n">array_out</span><span class="p">));</span>
+<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayAppendInt</span><span class="p">(</span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayAppendInt</span><span class="p">(</span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
+<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayAppendInt</span><span class="p">(</span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">));</span>
+<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayFinishBuilding</span><span class="p">(</span><span class="n">array_out</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">error</span><span class="p">));</span>
 
-<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowSchemaInit</span><span class="p">(</span><span class="n">schema_out</span><span class="p">,</span><span class="w"> </span><span class="n">NANOARROW_TYPE_INT32</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowSchemaInit</span><span class="p">(</span><span class="n">schema_out</span><span class="p">,</span><span class="w"> </span><span class="n">NANOARROW_TYPE_INT32</span><span class="p">));</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">NANOARROW_OK</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">NANOARROW_OK</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>A simple consumer example:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;nanoarrow.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;nanoarrow.h&quot;</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">print_simple_array</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowArray</span><span class="o">*</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowSchema</span><span class="o">*</span><span class="w"> </span><span class="n">schema</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowError</span><span class="w"> </span><span class="n">error</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowArrayView</span><span class="w"> </span><span class="n">array_view</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayViewInitFromSchema</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array_view</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">error</span><span class="p">));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">print_simple_array</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowArray</span><span class="o">*</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowSchema</span><span class="o">*</span><span class="w"> </span><span class="n">schema</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowError</span><span class="w"> </span><span class="n">error</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowArrayView</span><span class="w"> </span><span class="n">array_view</span><span class="p">;</span>
+<span class="w">  </span><span class="n">NANOARROW_RETURN_NOT_OK</span><span class="p">(</span><span class="n">ArrowArrayViewInitFromSchema</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array_view</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">error</span><span class="p">));</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">array_view</span><span class="p">.</span><span class="n">storage_type</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">NANOARROW_TYPE_INT32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Array has storage that is not int32</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">array_view</span><span class="p">.</span><span class="n">storage_type</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">NANOARROW_TYPE_INT32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Array has storage that is not int32</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ArrowArrayViewSetArray</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array_view</span><span class="p">,</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">error</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">NANOARROW_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">ArrowArrayViewReset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array_view</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ArrowArrayViewSetArray</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array_view</span><span class="p">,</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">error</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">NANOARROW_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ArrowArrayViewReset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array_view</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">array</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">ArrowArrayViewGetIntUnsafe</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array_view</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">array</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">ArrowArrayViewGetIntUnsafe</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array_view</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="n">ArrowArrayViewReset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array_view</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">NANOARROW_OK</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">ArrowArrayViewReset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array_view</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">NANOARROW_OK</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -505,7 +505,7 @@ repository.</p>
     
 <p class="copyright">
 
-    &copy; Copyright 2016-2022 Apache Software Foundation.<br>
+    &copy; Copyright 2016-2023 Apache Software Foundation.<br>
 
 </p>
 
