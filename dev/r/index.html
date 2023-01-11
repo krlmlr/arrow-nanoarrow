@@ -79,7 +79,7 @@
 <p>You can install the development version of nanoarrow from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"apache/arrow-nanoarrow/r"</span>, build <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"apache/arrow-nanoarrow/r"</span><span class="op">)</span></span></code></pre></div>
 <p>If you can load the package, you’re good to go!</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow-nanoarrow" class="external-link">nanoarrow</a></span><span class="op">)</span></span></code></pre></div>
@@ -129,7 +129,7 @@
 <span><span class="co">#&gt;  $ offset    : int 0</span></span>
 <span><span class="co">#&gt;  $ buffers   :List of 2</span></span>
 <span><span class="co">#&gt;   ..$ :&lt;nanoarrow_buffer_validity[0 b] at 0x0&gt;</span></span>
-<span><span class="co">#&gt;   ..$ :&lt;nanoarrow_buffer_data_int32[20 b] at 0x135d13c28&gt;</span></span>
+<span><span class="co">#&gt;   ..$ :&lt;nanoarrow_buffer_data_int32[20 b] at 0x10d316a68&gt;</span></span>
 <span><span class="co">#&gt;  $ dictionary: NULL</span></span>
 <span><span class="co">#&gt;  $ children  : list()</span></span>
 <span><span class="fu"><a href="reference/as_nanoarrow_array.html">as_nanoarrow_array</a></span><span class="op">(</span><span class="fu">arrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/RecordBatch.html" class="external-link">record_batch</a></span><span class="op">(</span>col1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.1</span>, <span class="fl">2.2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -146,7 +146,7 @@
 <span><span class="co">#&gt;   .. ..$ offset    : int 0</span></span>
 <span><span class="co">#&gt;   .. ..$ buffers   :List of 2</span></span>
 <span><span class="co">#&gt;   .. .. ..$ :&lt;nanoarrow_buffer_validity[0 b] at 0x0&gt;</span></span>
-<span><span class="co">#&gt;   .. .. ..$ :&lt;nanoarrow_buffer_data_double[16 b] at 0x13604f0b8&gt;</span></span>
+<span><span class="co">#&gt;   .. .. ..$ :&lt;nanoarrow_buffer_data_double[16 b] at 0x11e534bb8&gt;</span></span>
 <span><span class="co">#&gt;   .. ..$ dictionary: NULL</span></span>
 <span><span class="co">#&gt;   .. ..$ children  : list()</span></span>
 <span><span class="co">#&gt;  $ dictionary: NULL</span></span></code></pre></div>
@@ -206,7 +206,7 @@
 <span><span class="co">#&gt;   .. ..$ offset    : int 0</span></span>
 <span><span class="co">#&gt;   .. ..$ buffers   :List of 2</span></span>
 <span><span class="co">#&gt;   .. .. ..$ :&lt;nanoarrow_buffer_validity[0 b] at 0x0&gt;</span></span>
-<span><span class="co">#&gt;   .. .. ..$ :&lt;nanoarrow_buffer_data_double[16 b] at 0x136de3538&gt;</span></span>
+<span><span class="co">#&gt;   .. .. ..$ :&lt;nanoarrow_buffer_data_double[16 b] at 0x119c35838&gt;</span></span>
 <span><span class="co">#&gt;   .. ..$ dictionary: NULL</span></span>
 <span><span class="co">#&gt;   .. ..$ children  : list()</span></span>
 <span><span class="co">#&gt;  $ dictionary: NULL</span></span>
@@ -224,7 +224,7 @@
 <span><span class="co">#&gt;   .. ..$ offset    : int 0</span></span>
 <span><span class="co">#&gt;   .. ..$ buffers   :List of 2</span></span>
 <span><span class="co">#&gt;   .. .. ..$ :&lt;nanoarrow_buffer_validity[0 b] at 0x0&gt;</span></span>
-<span><span class="co">#&gt;   .. .. ..$ :&lt;nanoarrow_buffer_data_double[16 b] at 0x136de3178&gt;</span></span>
+<span><span class="co">#&gt;   .. .. ..$ :&lt;nanoarrow_buffer_data_double[16 b] at 0x119c710b8&gt;</span></span>
 <span><span class="co">#&gt;   .. ..$ dictionary: NULL</span></span>
 <span><span class="co">#&gt;   .. ..$ children  : list()</span></span>
 <span><span class="co">#&gt;  $ dictionary: NULL</span></span>
