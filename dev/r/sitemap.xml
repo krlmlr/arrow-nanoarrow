@@ -19,6 +19,9 @@
     <loc>/reference/as_nanoarrow_array_stream.html</loc>
   </url>
   <url>
+    <loc>/reference/as_nanoarrow_buffer.html</loc>
+  </url>
+  <url>
     <loc>/reference/as_nanoarrow_schema.html</loc>
   </url>
   <url>
@@ -41,6 +44,12 @@
   </url>
   <url>
     <loc>/reference/nanoarrow-package.html</loc>
+  </url>
+  <url>
+    <loc>/reference/nanoarrow_array_init.html</loc>
+  </url>
+  <url>
+    <loc>/reference/nanoarrow_buffer_init.html</loc>
   </url>
   <url>
     <loc>/reference/nanoarrow_pointer_is_valid.html</loc>
