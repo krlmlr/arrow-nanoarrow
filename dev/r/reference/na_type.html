@@ -121,7 +121,7 @@ prints/is returned by <code><a href="as_nanoarrow_schema.html">nanoarrow_schema_
 <span></span>
 <span><span class="fu">na_time32</span><span class="op">(</span>unit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ms"</span>, <span class="st">"s"</span><span class="op">)</span>, nullable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">na_time64</span><span class="op">(</span>unit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ns"</span>, <span class="st">"us"</span><span class="op">)</span>, nullable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">na_time64</span><span class="op">(</span>unit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"us"</span>, <span class="st">"ns"</span><span class="op">)</span>, nullable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">na_duration</span><span class="op">(</span>unit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ms"</span>, <span class="st">"s"</span>, <span class="st">"us"</span>, <span class="st">"ns"</span><span class="op">)</span>, nullable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -131,13 +131,13 @@ prints/is returned by <code><a href="as_nanoarrow_schema.html">nanoarrow_schema_
 <span></span>
 <span><span class="fu">na_interval_month_day_nano</span><span class="op">(</span>nullable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">na_timestamp</span><span class="op">(</span>unit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ms"</span>, <span class="st">"s"</span>, <span class="st">"us"</span>, <span class="st">"ns"</span><span class="op">)</span>, timezone <span class="op">=</span> <span class="st">""</span>, nullable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">na_timestamp</span><span class="op">(</span>unit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"us"</span>, <span class="st">"ns"</span>, <span class="st">"s"</span>, <span class="st">"ms"</span><span class="op">)</span>, timezone <span class="op">=</span> <span class="st">""</span>, nullable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">na_decimal128</span><span class="op">(</span><span class="va">precision</span>, <span class="va">scale</span>, nullable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">na_decimal256</span><span class="op">(</span><span class="va">precision</span>, <span class="va">scale</span>, nullable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">na_struct</span><span class="op">(</span>column_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, nullable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">na_struct</span><span class="op">(</span>column_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, nullable <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">na_sparse_union</span><span class="op">(</span>column_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -269,7 +269,7 @@ null values.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ format    : chr "+s"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ name      : chr ""</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ metadata  : list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ flags     : int 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ flags     : int 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ children  :List of 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ col1:&lt;nanoarrow_schema int32&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ format    : chr "i"</span>
