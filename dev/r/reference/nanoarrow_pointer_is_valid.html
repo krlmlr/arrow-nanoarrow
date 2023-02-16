@@ -98,6 +98,25 @@ non-null.</p>
 
 </dl></div>
     <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    
+
+<ul><li><p><code>nanoarrow_pointer_is_valid()</code> returns TRUE if the pointer is non-null
+and has a non-null release callback.</p></li>
+<li><p><code>nanoarrow_pointer_addr_dbl()</code> and <code>nanoarrow_pointer_addr_chr()</code> return
+pointer representations that may be helpful to facilitate moving or
+exporting nanoarrow objects to other libraries.</p></li>
+<li><p><code>nanoarrow_pointer_addr_pretty()</code> gives a pointer representation suitable
+for printing or error messages.</p></li>
+<li><p><code>nanoarrow_pointer_release()</code> returns <code>ptr</code>, invisibly.</p></li>
+<li><p><code>nanoarrow_pointer_move()</code> and <code>nanoarrow_pointer_export()</code> reeturn
+<code>ptr_dst</code>, invisibly.</p></li>
+<li><p><code>nanoarrow_allocate_array()</code>, <code>nanoarrow_allocate_schema()</code>, and
+<code>nanoarrow_allocate_array_stream()</code> return an
+<a href="as_nanoarrow_array.html">array</a>, a <a href="as_nanoarrow_schema.html">schema</a>, and an
+<a href="as_nanoarrow_array_stream.html">array stream</a>, respectively.</p></li>
+</ul></div>
+    <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>When interacting with other C Data Interface implementations, it is
 important to keep in mind that the R object wrapping these pointers is
