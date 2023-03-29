@@ -583,7 +583,41 @@ document.write(`
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__nanoarrow-array"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">nanoarrow-array</span></span></dt>
-<dd><p>These functions allocate, copy, and destroy <a class="reference internal" href="#struct_arrow_array"><span class="std std-ref">ArrowArray</span></a> structures </p>
+<dd><p>These functions allocate, copy, and destroy <a class="reference internal" href="#struct_arrow_array"><span class="std std-ref">ArrowArray</span></a> structures. Once an <a class="reference internal" href="#struct_arrow_array"><span class="std std-ref">ArrowArray</span></a> has been initialized via <a class="reference internal" href="#group__nanoarrow-array_1ga7ba21750febf031b1506fa5f391d9074"><span class="std std-ref">ArrowArrayInitFromType()</span></a> or <a class="reference internal" href="#group__nanoarrow-array_1ga31a82c7fe72e5cc46eeab4713c284f84"><span class="std std-ref">ArrowArrayInitFromSchema()</span></a>, the caller is responsible for releasing it using the embedded release callback. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv420ArrowValidationLevel">
+<span id="_CPPv320ArrowValidationLevel"></span><span id="_CPPv220ArrowValidationLevel"></span><span class="target" id="group__nanoarrow-array_1ga75bb85a49c08c4ce1e60876d3973c4ab"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowValidationLevel</span></span></span><a class="headerlink" href="#_CPPv420ArrowValidationLevel" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Validation level enumerator. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20ArrowValidationLevel31NANOARROW_VALIDATION_LEVEL_NONEE">
+<span id="_CPPv3N20ArrowValidationLevel31NANOARROW_VALIDATION_LEVEL_NONEE"></span><span id="_CPPv2N20ArrowValidationLevel31NANOARROW_VALIDATION_LEVEL_NONEE"></span><span class="target" id="group__nanoarrow-array_1gga75bb85a49c08c4ce1e60876d3973c4aba151d32847475d1e1a261ab6565559307"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NANOARROW_VALIDATION_LEVEL_NONE</span></span></span><a class="headerlink" href="#_CPPv4N20ArrowValidationLevel31NANOARROW_VALIDATION_LEVEL_NONEE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Do not validate buffer sizes or content. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20ArrowValidationLevel34NANOARROW_VALIDATION_LEVEL_MINIMALE">
+<span id="_CPPv3N20ArrowValidationLevel34NANOARROW_VALIDATION_LEVEL_MINIMALE"></span><span id="_CPPv2N20ArrowValidationLevel34NANOARROW_VALIDATION_LEVEL_MINIMALE"></span><span class="target" id="group__nanoarrow-array_1gga75bb85a49c08c4ce1e60876d3973c4aba41624e0991614eaf78e05b4ae9cd9891"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NANOARROW_VALIDATION_LEVEL_MINIMAL</span></span></span><a class="headerlink" href="#_CPPv4N20ArrowValidationLevel34NANOARROW_VALIDATION_LEVEL_MINIMALE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Validate buffer sizes that depend on array length but do not validate buffer sizes that depend on buffer data access. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20ArrowValidationLevel34NANOARROW_VALIDATION_LEVEL_DEFAULTE">
+<span id="_CPPv3N20ArrowValidationLevel34NANOARROW_VALIDATION_LEVEL_DEFAULTE"></span><span id="_CPPv2N20ArrowValidationLevel34NANOARROW_VALIDATION_LEVEL_DEFAULTE"></span><span class="target" id="group__nanoarrow-array_1gga75bb85a49c08c4ce1e60876d3973c4aba6b31654cb4568bc0f77365853b9ab154"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NANOARROW_VALIDATION_LEVEL_DEFAULT</span></span></span><a class="headerlink" href="#_CPPv4N20ArrowValidationLevel34NANOARROW_VALIDATION_LEVEL_DEFAULTE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Validate all buffer sizes, including those that require buffer data access, but do not perform any checks that are O(1) along the length of the buffers. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20ArrowValidationLevel31NANOARROW_VALIDATION_LEVEL_FULLE">
+<span id="_CPPv3N20ArrowValidationLevel31NANOARROW_VALIDATION_LEVEL_FULLE"></span><span id="_CPPv2N20ArrowValidationLevel31NANOARROW_VALIDATION_LEVEL_FULLE"></span><span class="target" id="group__nanoarrow-array_1gga75bb85a49c08c4ce1e60876d3973c4aba9475a854f102de99e9a8f3a22eb66226"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NANOARROW_VALIDATION_LEVEL_FULL</span></span></span><a class="headerlink" href="#_CPPv4N20ArrowValidationLevel31NANOARROW_VALIDATION_LEVEL_FULLE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Validate all buffer sizes and all buffer content. This is useful in the context of untrusted input or input that may have been corrupted in transit. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
@@ -724,10 +758,17 @@ document.write(`
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv424ArrowArrayFinishBuildingP10ArrowArrayP10ArrowError">
-<span id="_CPPv324ArrowArrayFinishBuildingP10ArrowArrayP10ArrowError"></span><span id="_CPPv224ArrowArrayFinishBuildingP10ArrowArrayP10ArrowError"></span><span id="ArrowArrayFinishBuilding__ArrowArrayP.ArrowErrorP"></span><span class="target" id="group__nanoarrow-array_1ga830400ee3d4dc8cf64c5839a65bf3a34"></span><a class="reference internal" href="#_CPPv414ArrowErrorCode" title="ArrowErrorCode"><span class="n"><span class="pre">ArrowErrorCode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayFinishBuilding</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowArray" title="ArrowArray"><span class="n"><span class="pre">ArrowArray</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424ArrowArrayFinishBuildingP10ArrowArrayP10ArrowError" title="Permalink to this definition">#</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv431ArrowArrayFinishBuildingDefaultP10ArrowArrayP10ArrowError">
+<span id="_CPPv331ArrowArrayFinishBuildingDefaultP10ArrowArrayP10ArrowError"></span><span id="_CPPv231ArrowArrayFinishBuildingDefaultP10ArrowArrayP10ArrowError"></span><span id="ArrowArrayFinishBuildingDefault__ArrowArrayP.ArrowErrorP"></span><span class="target" id="group__nanoarrow-array_1ga53e9821a54550269d34e4f72126c23b9"></span><a class="reference internal" href="#_CPPv414ArrowErrorCode" title="ArrowErrorCode"><span class="n"><span class="pre">ArrowErrorCode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayFinishBuildingDefault</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowArray" title="ArrowArray"><span class="n"><span class="pre">ArrowArray</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431ArrowArrayFinishBuildingDefaultP10ArrowArrayP10ArrowError" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Finish building an <a class="reference internal" href="#struct_arrow_array"><span class="std std-ref">ArrowArray</span></a>. </p>
-<p>Flushes any pointers from internal buffers that may have been reallocated into the array-&gt;buffers array and checks the actual size of the buffers against the expected size based on the final length. array must have been allocated using <a class="reference internal" href="#group__nanoarrow-array_1ga7ba21750febf031b1506fa5f391d9074"><span class="std std-ref">ArrowArrayInitFromType()</span></a></p>
+<p>Flushes any pointers from internal buffers that may have been reallocated into array-&gt;buffers and checks the actual size of the buffers against the expected size based on the final length. array must have been allocated using <a class="reference internal" href="#group__nanoarrow-array_1ga7ba21750febf031b1506fa5f391d9074"><span class="std std-ref">ArrowArrayInitFromType()</span></a></p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424ArrowArrayFinishBuildingP10ArrowArray20ArrowValidationLevelP10ArrowError">
+<span id="_CPPv324ArrowArrayFinishBuildingP10ArrowArray20ArrowValidationLevelP10ArrowError"></span><span id="_CPPv224ArrowArrayFinishBuildingP10ArrowArray20ArrowValidationLevelP10ArrowError"></span><span id="ArrowArrayFinishBuilding__ArrowArrayP.ArrowValidationLevel.ArrowErrorP"></span><span class="target" id="group__nanoarrow-array_1ga4b943650875e4d3c44731d98059e9238"></span><a class="reference internal" href="#_CPPv414ArrowErrorCode" title="ArrowErrorCode"><span class="n"><span class="pre">ArrowErrorCode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayFinishBuilding</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowArray" title="ArrowArray"><span class="n"><span class="pre">ArrowArray</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv420ArrowValidationLevel" title="ArrowValidationLevel"><span class="n"><span class="pre">ArrowValidationLevel</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">validation_level</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424ArrowArrayFinishBuildingP10ArrowArray20ArrowValidationLevelP10ArrowError" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Finish building an <a class="reference internal" href="#struct_arrow_array"><span class="std std-ref">ArrowArray</span></a> with explicit validation. </p>
+<p>Finish building with an explicit validation level. This could perform less validation (i.e. NANOARROW_VALIDATION_LEVEL_NONE or NANOARROW_VALIDATION_LEVEL_MINIMAL) if CPU buffer data access is not possible or more validation (i.e., NANOARROW_VALIDATION_LEVEL_FULL) if buffer content was obtained from an untrusted or corruptable source. </p>
 </dd></dl>
 
 </div>
