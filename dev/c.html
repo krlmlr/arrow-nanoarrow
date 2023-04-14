@@ -733,7 +733,15 @@ document.write(`
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv422ArrowArrayAppendStringP10ArrowArray15ArrowStringView">
 <span id="_CPPv322ArrowArrayAppendStringP10ArrowArray15ArrowStringView"></span><span id="_CPPv222ArrowArrayAppendStringP10ArrowArray15ArrowStringView"></span><span id="ArrowArrayAppendString__ArrowArrayP.ArrowStringView"></span><span class="target" id="group__nanoarrow-array_1gaa8c9118312eda7fc17fb6bf9d721ca9d"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414ArrowErrorCode" title="ArrowErrorCode"><span class="n"><span class="pre">ArrowErrorCode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayAppendString</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowArray" title="ArrowArray"><span class="n"><span class="pre">ArrowArray</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv415ArrowStringView" title="ArrowStringView"><span class="n"><span class="pre">ArrowStringView</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ArrowArrayAppendStringP10ArrowArray15ArrowStringView" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>Append a string value to an array Returns NANOARROW_OK if value can be exactly represented by the underlying storage type or EINVAL otherwise (e.g., the underlying array is not a string or large string array). </p>
+<dd><p>Append a string value to an array. </p>
+<p>Returns NANOARROW_OK if value can be exactly represented by the underlying storage type or EINVAL otherwise (e.g., the underlying array is not a string or large string array). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ArrowArrayAppendDecimalP10ArrowArrayP12ArrowDecimal">
+<span id="_CPPv323ArrowArrayAppendDecimalP10ArrowArrayP12ArrowDecimal"></span><span id="_CPPv223ArrowArrayAppendDecimalP10ArrowArrayP12ArrowDecimal"></span><span id="ArrowArrayAppendDecimal__ArrowArrayP.ArrowDecimalP"></span><span class="target" id="group__nanoarrow-array_1gaa224decd739a8941991588cb94860386"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414ArrowErrorCode" title="ArrowErrorCode"><span class="n"><span class="pre">ArrowErrorCode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayAppendDecimal</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowArray" title="ArrowArray"><span class="n"><span class="pre">ArrowArray</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412ArrowDecimal" title="ArrowDecimal"><span class="n"><span class="pre">ArrowDecimal</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ArrowArrayAppendDecimalP10ArrowArrayP12ArrowDecimal" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Append a decimal value to an array. </p>
+<p>Returns NANOARROW_OK if array is a decimal array with the appropriate bitwidth or EINVAL otherwise. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -930,6 +938,13 @@ document.write(`
 <span id="_CPPv328ArrowArrayViewGetBytesUnsafeP14ArrowArrayView7int64_t"></span><span id="_CPPv228ArrowArrayViewGetBytesUnsafeP14ArrowArrayView7int64_t"></span><span id="ArrowArrayViewGetBytesUnsafe__ArrowArrayViewP.int64_t"></span><span class="target" id="group__nanoarrow-array-view_1ga6cb0bd30d8a95ff5dacf0232d401e512"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv415ArrowBufferView" title="ArrowBufferView"><span class="n"><span class="pre">ArrowBufferView</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewGetBytesUnsafe</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414ArrowArrayView" title="ArrowArrayView"><span class="n"><span class="pre">ArrowArrayView</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428ArrowArrayViewGetBytesUnsafeP14ArrowArrayView7int64_t" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Get an element in an <a class="reference internal" href="#struct_arrow_array_view"><span class="std std-ref">ArrowArrayView</span></a> as an <a class="reference internal" href="#struct_arrow_buffer_view"><span class="std std-ref">ArrowBufferView</span></a>. </p>
 <p>This function does not check for null values. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430ArrowArrayViewGetDecimalUnsafeP14ArrowArrayView7int64_tP12ArrowDecimal">
+<span id="_CPPv330ArrowArrayViewGetDecimalUnsafeP14ArrowArrayView7int64_tP12ArrowDecimal"></span><span id="_CPPv230ArrowArrayViewGetDecimalUnsafeP14ArrowArrayView7int64_tP12ArrowDecimal"></span><span id="ArrowArrayViewGetDecimalUnsafe__ArrowArrayViewP.int64_t.ArrowDecimalP"></span><span class="target" id="group__nanoarrow-array-view_1gabb75d3ea198c73f4fe7f494f884476c4"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowArrayViewGetDecimalUnsafe</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414ArrowArrayView" title="ArrowArrayView"><span class="n"><span class="pre">ArrowArrayView</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">array_view</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412ArrowDecimal" title="ArrowDecimal"><span class="n"><span class="pre">ArrowDecimal</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430ArrowArrayViewGetDecimalUnsafeP14ArrowArrayView7int64_tP12ArrowDecimal" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Get an element in an <a class="reference internal" href="#struct_arrow_array_view"><span class="std std-ref">ArrowArrayView</span></a> as an <a class="reference internal" href="#struct_arrow_decimal"><span class="std std-ref">ArrowDecimal</span></a>. </p>
+<p>This function does not check for null values. The out parameter must be initialized with ArrowDecimalInit() with the proper parameters for this type before calling this for the first time. </p>
 </dd></dl>
 
 </div>
@@ -1821,6 +1836,36 @@ document.write(`
 <p>Returns NULL for invalid values for time_unit </p>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416ArrowDecimalInitP12ArrowDecimal7int32_t7int32_t7int32_t">
+<span id="_CPPv316ArrowDecimalInitP12ArrowDecimal7int32_t7int32_t7int32_t"></span><span id="_CPPv216ArrowDecimalInitP12ArrowDecimal7int32_t7int32_t7int32_t"></span><span id="ArrowDecimalInit__ArrowDecimalP.int32_t.int32_t.int32_t"></span><span class="target" id="group__nanoarrow-utils_1ga07178a7a7ccc9339d129d717bcec88c9"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowDecimalInit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412ArrowDecimal" title="ArrowDecimal"><span class="n"><span class="pre">ArrowDecimal</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">decimal</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bitwidth</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">precision</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">scale</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ArrowDecimalInitP12ArrowDecimal7int32_t7int32_t7int32_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Initialize a decimal with a given set of type parameters. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420ArrowDecimalGetBytesP12ArrowDecimalP7uint8_t">
+<span id="_CPPv320ArrowDecimalGetBytesP12ArrowDecimalP7uint8_t"></span><span id="_CPPv220ArrowDecimalGetBytesP12ArrowDecimalP7uint8_t"></span><span id="ArrowDecimalGetBytes__ArrowDecimalP.uint8_tP"></span><span class="target" id="group__nanoarrow-utils_1gac9ec414fec12fc2890a182ed4ec242ab"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowDecimalGetBytes</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412ArrowDecimal" title="ArrowDecimal"><span class="n"><span class="pre">ArrowDecimal</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">decimal</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420ArrowDecimalGetBytesP12ArrowDecimalP7uint8_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Copy the bytes of this decimal into a sufficiently large buffer. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416ArrowDecimalSignP12ArrowDecimal">
+<span id="_CPPv316ArrowDecimalSignP12ArrowDecimal"></span><span id="_CPPv216ArrowDecimalSignP12ArrowDecimal"></span><span id="ArrowDecimalSign__ArrowDecimalP"></span><span class="target" id="group__nanoarrow-utils_1gadd1d55f0df0cb4a119e1b4c8dc255170"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowDecimalSign</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412ArrowDecimal" title="ArrowDecimal"><span class="n"><span class="pre">ArrowDecimal</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">decimal</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416ArrowDecimalSignP12ArrowDecimal" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Returns 1 if the value represented by decimal is &gt;= 0 or -1 otherwise. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418ArrowDecimalSetIntP12ArrowDecimal7int64_t">
+<span id="_CPPv318ArrowDecimalSetIntP12ArrowDecimal7int64_t"></span><span id="_CPPv218ArrowDecimalSetIntP12ArrowDecimal7int64_t"></span><span id="ArrowDecimalSetInt__ArrowDecimalP.int64_t"></span><span class="target" id="group__nanoarrow-utils_1gad67d62564afed7c66c0c304cc87e63f0"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowDecimalSetInt</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412ArrowDecimal" title="ArrowDecimal"><span class="n"><span class="pre">ArrowDecimal</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">decimal</span></span>, <span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418ArrowDecimalSetIntP12ArrowDecimal7int64_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Sets the integer value of this decimal. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420ArrowDecimalSetBytesP12ArrowDecimalPK7uint8_t">
+<span id="_CPPv320ArrowDecimalSetBytesP12ArrowDecimalPK7uint8_t"></span><span id="_CPPv220ArrowDecimalSetBytesP12ArrowDecimalPK7uint8_t"></span><span id="ArrowDecimalSetBytes__ArrowDecimalP.uint8_tCP"></span><span class="target" id="group__nanoarrow-utils_1gae1a97e4544e59f2c381f1f1cd5351a33"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowDecimalSetBytes</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412ArrowDecimal" title="ArrowDecimal"><span class="n"><span class="pre">ArrowDecimal</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">decimal</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420ArrowDecimalSetBytesP12ArrowDecimalPK7uint8_t" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Copy bytes from a buffer into this decimal. </p>
+</dd></dl>
+
 </div>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv415ArrowStringView">
@@ -1896,6 +1941,54 @@ document.write(`
 <dt class="sig sig-object cpp" id="_CPPv4N11ArrowLayout19child_size_elementsE">
 <span id="_CPPv3N11ArrowLayout19child_size_elementsE"></span><span id="_CPPv2N11ArrowLayout19child_size_elementsE"></span><span id="ArrowLayout::child_size_elements__int64_t"></span><span class="target" id="struct_arrow_layout_1a3029a338b3c716c3f7ddadada280c880"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">child_size_elements</span></span></span><a class="headerlink" href="#_CPPv4N11ArrowLayout19child_size_elementsE" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>The number of elements in the child array per element in this array for a fixed-size list. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv412ArrowDecimal">
+<span id="_CPPv312ArrowDecimal"></span><span id="_CPPv212ArrowDecimal"></span><span id="ArrowDecimal"></span><span class="target" id="struct_arrow_decimal"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowDecimal</span></span></span><a class="headerlink" href="#_CPPv412ArrowDecimal" title="Permalink to this definition">#</a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;nanoarrow_types.h&gt;</em></div>
+<p>A representation of a fixed-precision decimal number. </p>
+<p>This structure should be initialized with ArrowDecimalInit() once and values set using ArrowDecimalSetInt(), ArrowDecimalSetBytes128(), or ArrowDecimalSetBytes256(). </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12ArrowDecimal5wordsE">
+<span id="_CPPv3N12ArrowDecimal5wordsE"></span><span id="_CPPv2N12ArrowDecimal5wordsE"></span><span id="ArrowDecimal::words__uint64_tA"></span><span class="target" id="struct_arrow_decimal_1aca665738c134dae7f1cb545b48d1ebb8"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">words</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N12ArrowDecimal5wordsE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>An array of 64-bit integers of n_words length defined in native-endian order. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12ArrowDecimal9precisionE">
+<span id="_CPPv3N12ArrowDecimal9precisionE"></span><span id="_CPPv2N12ArrowDecimal9precisionE"></span><span id="ArrowDecimal::precision__int32_t"></span><span class="target" id="struct_arrow_decimal_1a7784aa2189b67dd479ab3cee0044d2ba"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">precision</span></span></span><a class="headerlink" href="#_CPPv4N12ArrowDecimal9precisionE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>The number of significant digits this decimal number can represent. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12ArrowDecimal5scaleE">
+<span id="_CPPv3N12ArrowDecimal5scaleE"></span><span id="_CPPv2N12ArrowDecimal5scaleE"></span><span id="ArrowDecimal::scale__int32_t"></span><span class="target" id="struct_arrow_decimal_1aa88bae3df5964afb34cd012ccdff1970"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scale</span></span></span><a class="headerlink" href="#_CPPv4N12ArrowDecimal5scaleE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>The number of digits after the decimal point. This can be negative. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12ArrowDecimal7n_wordsE">
+<span id="_CPPv3N12ArrowDecimal7n_wordsE"></span><span id="_CPPv2N12ArrowDecimal7n_wordsE"></span><span id="ArrowDecimal::n_words__i"></span><span class="target" id="struct_arrow_decimal_1a6c70dd46548980ab26e411f6051c5e96"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">n_words</span></span></span><a class="headerlink" href="#_CPPv4N12ArrowDecimal7n_wordsE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>The number of words in the words array. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12ArrowDecimal15high_word_indexE">
+<span id="_CPPv3N12ArrowDecimal15high_word_indexE"></span><span id="_CPPv2N12ArrowDecimal15high_word_indexE"></span><span id="ArrowDecimal::high_word_index__i"></span><span class="target" id="struct_arrow_decimal_1a1d8e73ef1240fd6f3e2fecdb48d9a15a"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">high_word_index</span></span></span><a class="headerlink" href="#_CPPv4N12ArrowDecimal15high_word_indexE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Cached value used by the implementation. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12ArrowDecimal14low_word_indexE">
+<span id="_CPPv3N12ArrowDecimal14low_word_indexE"></span><span id="_CPPv2N12ArrowDecimal14low_word_indexE"></span><span id="ArrowDecimal::low_word_index__i"></span><span class="target" id="struct_arrow_decimal_1a6e388c4f048137011236c914abc03241"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">low_word_index</span></span></span><a class="headerlink" href="#_CPPv4N12ArrowDecimal14low_word_indexE" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Cached value used by the implementation. </p>
 </dd></dl>
 
 </div>
