@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 
 
@@ -1511,7 +1510,8 @@ document.write(`
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__nanoarrow-errors"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">nanoarrow-errors</span></span></dt>
-<dd><p>Functions generally return an errno-compatible error code; functions that need to communicate more verbose error information accept a pointer to an <a class="reference internal" href="#struct_arrow_error"><span class="std std-ref">ArrowError</span></a>. This can be stack or statically allocated. The content of the message is undefined unless an error code has been returned. </p>
+<dd><p>Functions generally return an errno-compatible error code; functions that need to communicate more verbose error information accept a pointer to an <a class="reference internal" href="#struct_arrow_error"><span class="std std-ref">ArrowError</span></a>. This can be stack or statically allocated. The content of the message is undefined unless an error code has been returned. If a nanoarrow function is passed a non-null <a class="reference internal" href="#struct_arrow_error"><span class="std std-ref">ArrowError</span></a> pointer, the <a class="reference internal" href="#struct_arrow_error"><span class="std std-ref">ArrowError</span></a> pointed to by the argument will be propagated with a null-terminated error message. It is safe to pass a NULL <a class="reference internal" href="#struct_arrow_error"><span class="std std-ref">ArrowError</span></a> anywhere in the nanoarrow API.</p>
+<p>Except where documented, it is generally not safe to continue after a function has returned a non-zero ArrowErrorCode. The NANOARROW_RETURN_NOT_OK and NANOARROW_ASSERT_OK macros are provided to help propagate errors. C++ clients can use the helpers provided in the nanoarrow.hpp header to facilitate using C++ idioms for memory management and error propgagtion. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
@@ -1524,6 +1524,13 @@ document.write(`
 <dt class="sig sig-object cpp" id="c.NANOARROW_RETURN_NOT_OK">
 <span class="target" id="group__nanoarrow-errors_1gadded0e0e389c1711f6ee55885f0960fd"></span><span class="sig-name descname"><span class="n"><span class="pre">NANOARROW_RETURN_NOT_OK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXPR</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.NANOARROW_RETURN_NOT_OK" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Check the result of an expression and return it if not NANOARROW_OK. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.NANOARROW_RETURN_NOT_OK_WITH_ERROR">
+<span class="target" id="group__nanoarrow-errors_1ga451f1a4d74fac95ca5e02398b16713bb"></span><span class="sig-name descname"><span class="n"><span class="pre">NANOARROW_RETURN_NOT_OK_WITH_ERROR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EXPR</span></span>, <span class="n"><span class="pre">ERROR_EXPR</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.NANOARROW_RETURN_NOT_OK_WITH_ERROR" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Check the result of an expression and return it if not NANOARROW_OK, adding an auto-generated message to an <a class="reference internal" href="#struct_arrow_error"><span class="std std-ref">ArrowError</span></a>. </p>
+<p>This macro is used to ensure that functions that accept an <a class="reference internal" href="#struct_arrow_error"><span class="std std-ref">ArrowError</span></a> as input always set its message when returning an error code (e.g., when calling a nanoarrow function that does <em>not</em> accept <a class="reference internal" href="#struct_arrow_error"><span class="std std-ref">ArrowError</span></a>). </p>
 </dd></dl>
 
 </div>
@@ -1539,15 +1546,24 @@ document.write(`
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414ArrowErrorInitP10ArrowError">
+<span id="_CPPv314ArrowErrorInitP10ArrowError"></span><span id="_CPPv214ArrowErrorInitP10ArrowError"></span><span id="ArrowErrorInit__ArrowErrorP"></span><span class="target" id="group__nanoarrow-errors_1ga83bb6736f6a4b2bc860731e10116154c"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowErrorInit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414ArrowErrorInitP10ArrowError" title="Permalink to this definition">#</a><br /></dt>
+<dd><p>Ensure an <a class="reference internal" href="#struct_arrow_error"><span class="std std-ref">ArrowError</span></a> is null-terminated by zeroing the first character. </p>
+<p>If error is NULL, this function does nothing. </p>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv413ArrowErrorSetP10ArrowErrorPKcz">
 <span id="_CPPv313ArrowErrorSetP10ArrowErrorPKcz"></span><span id="_CPPv213ArrowErrorSetP10ArrowErrorPKcz"></span><span id="ArrowErrorSet__ArrowErrorP.cCP.z"></span><span class="target" id="group__nanoarrow-errors_1ga505469650d679b2fa680f31bdbc457cd"></span><a class="reference internal" href="#_CPPv414ArrowErrorCode" title="ArrowErrorCode"><span class="n"><span class="pre">ArrowErrorCode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArrowErrorSet</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413ArrowErrorSetP10ArrowErrorPKcz" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Set the contents of an error using printf syntax. </p>
+<p>If error is NULL, this function does nothing and returns NANOARROW_OK. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv417ArrowErrorMessageP10ArrowError">
 <span id="_CPPv317ArrowErrorMessageP10ArrowError"></span><span id="_CPPv217ArrowErrorMessageP10ArrowError"></span><span id="ArrowErrorMessage__ArrowErrorP"></span><span class="target" id="group__nanoarrow-errors_1gaefec4255da8f1a584c6fc8ef357d7b13"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ArrowErrorMessage</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410ArrowError" title="ArrowError"><span class="n"><span class="pre">ArrowError</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">error</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417ArrowErrorMessageP10ArrowError" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Get the contents of an error. </p>
+<p>If error is NULL, returns “”, or returns the contents of the error message otherwise. </p>
 </dd></dl>
 
 </div>
@@ -2331,7 +2347,7 @@ document.write(`
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.0.
     <br/>
   </p>
 </div>
