@@ -87,7 +87,9 @@ non-null.</p>
 <span></span>
 <span><span class="fu">nanoarrow_allocate_array</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">nanoarrow_allocate_array_stream</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">nanoarrow_allocate_array_stream</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">nanoarrow_pointer_set_protected</span><span class="op">(</span><span class="va">ptr_src</span>, <span class="va">protected</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -95,6 +97,13 @@ non-null.</p>
     <dl><dt>ptr, ptr_src, ptr_dst</dt>
 <dd><p>An external pointer to a <code>struct ArrowSchema</code>,
 <code>struct ArrowArray</code>, or <code>struct ArrowArrayStream</code>.</p></dd>
+
+
+<dt>protected</dt>
+<dd><p>An object whose scope must outlive that of <code>ptr</code>. This is
+useful for array streams since at least two specifications involving the
+array stream specify that the stream is only valid for the lifecycle of
+another object (e.g., an AdbcStatement or OGRDataset).</p></dd>
 
 </dl></div>
     <div class="section level2">
