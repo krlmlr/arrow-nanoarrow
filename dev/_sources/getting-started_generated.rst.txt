@@ -76,7 +76,7 @@ libraries. For this tutorial, we will use
 `CMake <https://cmake.org/>`__. You’ll need both installed to follow
 along: VSCode can be downloaded from the official site for most
 platforms; CMake is typically installed via your favourite package
-manager (e.g., ``brew install cmake``, ``apt-get install cmake``
+manager (e.g., ``brew install cmake``, ``apt-get install cmake``,
 ``dnf install cmake``, etc.). You will also need a C and C++ compiler:
 on MacOS these can be installed using ``xcode-select --install``; on
 Linux you will need the packages that provide ``gcc``, ``g++``, and
