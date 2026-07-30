@@ -25,12 +25,12 @@ Release candidates for nanoarrow are uploaded to https://dist.apache.org/repos/d
 prior to a release vote being called on the
 [Apache Arrow developer mailing list](https://lists.apache.org/list.html?dev@arrow.apache.org).
 A script (`verify-release-candidate.sh`) is provided to verify such a release candidate.
-For example, to verify nanoarrow 0.8.0-rc0, one could run:
+For example, to verify nanoarrow 0.9.0-rc0, one could run:
 
 ```bash
 git clone https://github.com/apache/arrow-nanoarrow.git arrow-nanoarrow
 cd arrow-nanoarrow/dev/release
-./verify-release-candidate.sh 0.8.0 0
+./verify-release-candidate.sh 0.9.0 0
 ```
 
 The verification script itself is written in `bash` and requires the `curl`, `gpg`, and
@@ -48,19 +48,19 @@ For example, to run only C library verification (requires CMake and Python but n
 To run only C library verification (requires CMake but not R or Python):
 
 ```bash
-TEST_DEFAULT=0 TEST_C=1 TEST_C_BUNDLED=1 ./verify-release-candidate.sh 0.8.0 0
+TEST_DEFAULT=0 TEST_C=1 TEST_C_BUNDLED=1 ./verify-release-candidate.sh 0.9.0 0
 ```
 
 To run only R package verification (requires R but not CMake or Arrow C++):
 
 ```bash
-TEST_DEFAULT=0 TEST_R=1 ./verify-release-candidate.sh 0.8.0 0
+TEST_DEFAULT=0 TEST_R=1 ./verify-release-candidate.sh 0.9.0 0
 ```
 
 To run only Python verification (requires Python but not CMake or Arrow C++):
 
 ```bash
-TEST_DEFAULT=0 TEST_PYTHON=1 ./verify-release-candidate.sh 0.8.0 0
+TEST_DEFAULT=0 TEST_PYTHON=1 ./verify-release-candidate.sh 0.9.0 0
 ```
 
 ### MacOS
@@ -84,8 +84,8 @@ For older MacOS or MacOS without Homebrew, you can
 ### Conda (Linux and MacOS)
 
 Using `conda`, one can install all requirements needed for verification on Linux
-or MacOS. Users are recommended to install `gnupg` using
-a system installer because of interactions with other installations that
+or MacOS (e.g., `docker run --rm -it condaforge/mambaforge`). Users are recommended
+to install `gnupg` using a system installer because of interactions with other installations that
 may cause a crash.
 
 ```bash
@@ -114,7 +114,7 @@ to verify the C library; R and Rtools can be installed using the
 ```bash
 # Pass location of R to the verification script
 export NANOARROW_CMAKE_OPTIONS="-Dgtest_force_shared_crt=ON"
-export R_HOME="/c/Program Files/R/R-4.5.0"
+export R_HOME="/c/Program Files/R/R-4.6.1"
 ```
 
 Unfortunately verifying Python via the release verification script on Windows may not work in some shells, thus successful verification may require `TEST_PYTHON=0 ./verify-release-candidate.sh`.
@@ -124,7 +124,7 @@ Unfortunately verifying Python via the release verification script on Windows ma
 On Debian/Ubuntu (e.g., `docker run --rm -it ubuntu:latest`) you can install prerequisites using `apt`.
 
 ```bash
-apt-get update && apt-get install -y git g++ cmake r-base gnupg curl python3-dev python3-venv
+apt-get update && apt-get install -y git g++ cmake r-base gnupg curl python3-dev python3-venv libuv1-dev
 ```
 
 If you have never installed an R package before, R verification will fail when it
@@ -138,7 +138,7 @@ On recent Fedora (e.g., `docker run --rm -it fedora:latest`), you can install al
 using `dnf`:
 
 ```bash
-dnf install -y git cmake R gnupg curl python3-devel python3-virtualenv awk
+dnf install -y git cmake R gnupg curl python3-devel python3-virtualenv awk libuv-devel
 ```
 
 ### Arch Linux
@@ -147,7 +147,7 @@ On Arch Linux (e.g., `docker run --rm -it archlinux:latest`, you can install all
 using `pacman`):
 
 ```bash
-pacman -Sy git gcc make cmake r-base gnupg curl python
+pacman -Sy git gcc make cmake r-base gnupg curl python libuv
 ```
 
 ### Alpine Linux
@@ -155,8 +155,7 @@ pacman -Sy git gcc make cmake r-base gnupg curl python
 On Alpine Linux (e.g., `docker run --rm -it alpine:latest`), all prerequisites are available using `apk add`.
 
 ```bash
-
-apk add bash linux-headers git cmake R R-dev g++ gnupg curl python3-dev
+apk add bash linux-headers git cmake R R-dev g++ gnupg curl python3-dev libuv-dev
 ```
 
 ### Big endian
@@ -168,7 +167,7 @@ One can verify a nanoarrow release candidate on big endian by setting
 ## Creating a release candidate
 
 The first step to creating a nanoarrow release is to create a `maint-VERSION` branch
-(e.g., `usethis::pr_init("maint-0.8.0")`) and push the branch to `upstream`. This is
+(e.g., `usethis::pr_init("maint-0.9.0")`) and push the branch to `upstream`. This is
 a good opportunity to run though the above instructions to make sure the verification
 script and instructions are up-to-date.
 
@@ -188,7 +187,7 @@ When these steps are complete, run
 ```bash
 # from the repository root
 # 01-prepare.sh <nanoarrow-dir> <prev_veresion> <version> <next_version> <rc-num>
-dev/release/01-prepare.sh . 0.7.0 0.8.0 0.9.0 0
+dev/release/01-prepare.sh . 0.8.0 0.9.0 0.10.0 0
 ```
 
 A currently not automated part of this workflow is updating the R NEWS.md
@@ -197,11 +196,11 @@ be copied to the R NEWS.md file. This is not essential (i.e., it does not
 affect the ability to release the R package).
 
 It is also important to ensure the usage on the README reflects the
-current version (e.g., download links refer to 0.8.0). This should be done
+current version (e.g., download links refer to 0.9.0). This should be done
 after the release branch is created.
 
 This will update version numbers, the changelong, and create the git tag
-`apache-arrow-nanoarrow-0.8.0-rc0`. Check to make sure that the changelog
+`apache-arrow-nanoarrow-0.9.0-rc0`. Check to make sure that the changelog
 and versions are what you expect them to be before pushing the tag (you
 may wish to do this by opening a dummy PR to run CI and look at the diff
 from the main branch).
@@ -225,7 +224,7 @@ file to exist setting the appropriate `GPG_KEY_ID` environment variable.
 
 ```bash
 # 02-sign.sh <version> <rc-num>
-dev/release/02-sign.sh 0.8.0 0
+dev/release/02-sign.sh 0.9.0 0
 ```
 
 Finally, run
@@ -237,7 +236,7 @@ file to exist setting the appropriate `APACHE_USERNAME` environment variable.
 
 ```
 # 03-source.sh $0 <version> <rc-num>
-dev/release/03-source.sh 0.8.0 0
+dev/release/03-source.sh 0.9.0 0
 ```
 
 You should check that the release verification runs locally and/or
@@ -247,11 +246,11 @@ start a
 At this point the release candidate is suitable for a vote on the Apache Arrow developer mailing list.
 
 ```
-[VOTE] Release nanoarrow 0.8.0
+[VOTE] Release nanoarrow 0.9.0
 
 Hello,
 
-I would like to propose the following release candidate (rc0) of Apache Arrow nanoarrow [0] version 0.8.0. This release consists of 44 resolved GitHub issues from 5 contributors [1].
+I would like to propose the following release candidate (rc0) of Apache Arrow nanoarrow [0] version 0.9.0. This release consists of 44 resolved GitHub issues from 5 contributors [1].
 
 This release candidate is based on commit: {rc_commit} [2]
 
@@ -262,15 +261,15 @@ Please download, verify checksums and signatures, run the unit tests, and vote o
 
 The vote will be open for at least 72 hours.
 
-[ ] +1 Release this as Apache Arrow nanoarrow 0.8.0
+[ ] +1 Release this as Apache Arrow nanoarrow 0.9.0
 [ ] +0
-[ ] -1 Do not release this as Apache Arrow nanoarrow 0.8.0 because...
+[ ] -1 Do not release this as Apache Arrow nanoarrow 0.9.0 because...
 
 [0] https://github.com/apache/arrow-nanoarrow
-[1] https://github.com/apache/arrow-nanoarrow/milestone/4?closed=1
-[2] https://github.com/apache/arrow-nanoarrow/tree/apache-arrow-nanoarrow-0.8.0-rc0
-[3] https://dist.apache.org/repos/dist/dev/arrow/apache-arrow-nanoarrow-0.8.0-rc0/
-[4] https://github.com/apache/arrow-nanoarrow/blob/apache-arrow-nanoarrow-0.8.0-rc0/CHANGELOG.md
+[1] https://github.com/apache/arrow-nanoarrow/milestone/9?closed=1
+[2] https://github.com/apache/arrow-nanoarrow/tree/apache-arrow-nanoarrow-0.9.0-rc0
+[3] https://dist.apache.org/repos/dist/dev/arrow/apache-arrow-nanoarrow-0.9.0-rc0/
+[4] https://github.com/apache/arrow-nanoarrow/blob/apache-arrow-nanoarrow-0.9.0-rc0/CHANGELOG.md
 [5] https://github.com/apache/arrow-nanoarrow/blob/main/dev/release/README.md
 ```
 
@@ -306,7 +305,7 @@ and mark it as closed.
 The reporter system for Arrow can be found at
 <https://reporter.apache.org/addrelease.html?arrow>. To add a release, a
 PMC member must log in with their Apache username/password. The release
-names are in the form `NANOARROW-0.8.0`.
+names are in the form `NANOARROW-0.9.0`.
 
 ### Upload artifacts to Subversion / Create GitHub Release
 
@@ -316,7 +315,7 @@ This script must be run by a PMC member whose `APACHE_USERNAME` environment vari
 has been set in `.env`.
 
 ```bash
-dev/release/post-01-upload.sh 0.8.0 0
+dev/release/post-01-upload.sh 0.9.0 0
 ```
 
 ### Submit R package to CRAN
@@ -340,16 +339,16 @@ If there are no NOTEs, WARNINGs, or ERRORs on the winbuilder results
 devtools::submit_cran()
 ```
 
-If changes *are* required, create a branch called `r-cran-maint-0.8.0`,
+If changes *are* required, create a branch called `r-cran-maint-0.9.0`,
 make any changes required, and resubmit to CRAN after bumping the "tweak"
-version (e.g., `Version: 0.8.0-1` in the `DESCRIPTION`). Ensure those changes
+version (e.g., `Version: 0.9.0-1` in the `DESCRIPTION`). Ensure those changes
 are also reflected in the main branch after submission is successful. Be sure to update
 `NEWS.md` in the R package to ensure that changes included in patch updates are
 transparent.
 
 ### Submit Python package to PyPI
 
-The Python package source distribution and wheels are built using the [Build Python Wheels](https://github.com/apache/arrow-nanoarrow/actions/workflows/python-wheels.yaml) action on the `maint-0.8.0` branch after cutting the release candidate.
+The Python package source distribution and wheels are built using the [Build Python Wheels](https://github.com/apache/arrow-nanoarrow/actions/workflows/python-wheels.yaml) action on the `maint-0.9.0` branch after cutting the release candidate.
 
 To submit these to PyPI, download all assets from the run into a folder (e.g., `python/dist`) and run `twine upload`:
 
@@ -388,6 +387,10 @@ The nanoarrow C library is available on [vcpkg](https://github.com/microsoft/vcp
 
 The nanoarrow C library is available on [conan](https://conan.io/center). When a new release is added, PR into the conan-center-index repository to make the new version available. See https://github.com/conan-io/conan-center-index/pull/29405 for a template PR.
 
+### Update the Homebrew Entry
+
+The nanoarrow C library is available on [Homebrew](https://brew.sh). When a new release is added, PR into the homebrew-core repository to make the new version available. See https://github.com/Homebrew/homebrew-core/pull/266595 for a template PR.
+
 ### Update release documentation
 
 The [nanoarrow documentation](https://arrow.apache.org/nanoarrow) is populated from the [asf-site branch](https://github.com/apache/arrow-nanoarrow/tree/asf-site) of this repository. To update the documentation, first clone just the asf-site branch:
@@ -397,18 +400,18 @@ git clone -b asf-site --single-branch https://github.com/apache/arrow-nanoarrow.
 cd arrow-nanoarrow
 ```
 
-Download the [0.8.0 documentation](https://github.com/apache/arrow-nanoarrow/releases/download/apache-arrow-nanoarrow-0.8.0/docs.tgz):
+Download the [0.9.0 documentation](https://github.com/apache/arrow-nanoarrow/releases/download/apache-arrow-nanoarrow-0.9.0/docs.tgz):
 
 ```shell
-curl -L https://github.com/apache/arrow-nanoarrow/releases/download/apache-arrow-nanoarrow-0.8.0/docs.tgz \
+curl -L https://github.com/apache/arrow-nanoarrow/releases/download/apache-arrow-nanoarrow-0.9.0/docs.tgz \
   -o docs.tgz
 ```
 
-Extract the documentation and rename the directory to `0.8.0`:
+Extract the documentation and rename the directory to `0.9.0`:
 
 ```shell
 tar -xvzf docs.tgz
-mv nanoarrow-docs 0.8.0
+mv nanoarrow-docs 0.9.0
 ```
 
 Then remove the existing `latest` directory and run the extraction again, renaming to `latest` instead:
@@ -419,7 +422,7 @@ tar -xvzf docs.tgz
 mv nanoarrow-docs latest
 ```
 
-Finally, update `switcher.json` with entries pointing `/latest/` and `/0.8.0/` to `"version": "0.8.0"`:
+Finally, update `switcher.json` with entries pointing `/latest/` and `/0.9.0/` to `"version": "0.9.0"`:
 
 ```json
 [
@@ -428,16 +431,16 @@ Finally, update `switcher.json` with entries pointing `/latest/` and `/0.8.0/` t
         "url": "https://arrow.apache.org/nanoarrow/main/"
     },
     {
-        "version": "0.8.0",
+        "version": "0.9.0",
         "url": "https://arrow.apache.org/nanoarrow/latest/"
+    },
+    {
+        "version": "0.9.0",
+        "url": "https://arrow.apache.org/nanoarrow/0.9.0/"
     },
     {
         "version": "0.8.0",
         "url": "https://arrow.apache.org/nanoarrow/0.8.0/"
-    },
-    {
-        "version": "0.7.0",
-        "url": "https://arrow.apache.org/nanoarrow/0.7.0/"
     },
     ...
 ]
@@ -460,9 +463,9 @@ or it will be rejected by the announce mailing list.
 Email template:
 
 ```
-[ANNOUNCE] Apache Arrow nanoarrow 0.8.0 Released
+[ANNOUNCE] Apache Arrow nanoarrow 0.9.0 Released
 
-The Apache Arrow community is pleased to announce the 0.8.0 release of
+The Apache Arrow community is pleased to announce the 0.9.0 release of
 Apache Arrow nanoarrow. This release covers 79 resolved issues
 from 9 contributors[1].
 
@@ -498,10 +501,10 @@ Please report any feedback to the mailing lists ([6], [7]).
 Regards,
 The Apache Arrow Community
 
-[1] https://github.com/apache/arrow-nanoarrow/issues?q=milestone%3A%22nanoarrow+0.8.0%22+is%3Aclosed
-[2] https://www.apache.org/dyn/closer.cgi/arrow/apache-arrow-nanoarrow-0.8.0
-[3] https://github.com/apache/arrow-nanoarrow/blob/apache-arrow-nanoarrow-0.8.0/CHANGELOG.md
-[4] https://arrow.apache.org/blog/2024/05/27/nanoarrow-0.8.0-release/
+[1] https://github.com/apache/arrow-nanoarrow/issues?q=milestone%3A%22nanoarrow+0.9.0%22+is%3Aclosed
+[2] https://www.apache.org/dyn/closer.cgi/arrow/apache-arrow-nanoarrow-0.9.0
+[3] https://github.com/apache/arrow-nanoarrow/blob/apache-arrow-nanoarrow-0.9.0/CHANGELOG.md
+[4] https://arrow.apache.org/blog/2024/05/27/nanoarrow-0.9.0-release/
 [5] https://arrow.apache.org/nanoarrow/
 [6] https://lists.apache.org/list.html?user@arrow.apache.org
 [7] https://lists.apache.org/list.html?dev@arrow.apache.org
@@ -525,7 +528,7 @@ This is handled by
 [post-03-bump-versions.sh](https://github.com/apache/arrow-nanoarrow/blob/main/dev/release/post-03-bump-versions.sh). Create a branch and then run:
 
 ```bash
-dev/release/post-03-bump-versions.sh . 0.8.0 0.9.0
+dev/release/post-03-bump-versions.sh . 0.9.0 0.10.0
 ```
 
 A currently not automated part of this workflow is also porting the R NEWS.md
@@ -535,6 +538,6 @@ makes the next R NEWS.md update for the next release make a bit more sense.
 After this PR is merged, create the dev tag that is used to generate the changelog:
 
 ```shell
-git tag -a apache-arrow-nanoarrow-0.9.0.dev -m "tag dev 0.9.0"
-git push upstream apache-arrow-nanoarrow-0.9.0.dev
+git tag -a apache-arrow-nanoarrow-0.10.0.dev -m "tag dev 0.10.0"
+git push upstream apache-arrow-nanoarrow-0.10.0.dev
 ```
