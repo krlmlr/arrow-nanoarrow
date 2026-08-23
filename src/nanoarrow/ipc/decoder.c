@@ -81,6 +81,10 @@ struct ArrowIpcDecoderPrivate {
   int64_t n_union_fields;
   // A pointer to the last flatbuffers message.
   const void* last_message;
+  // The custom_metadata of the last flatbuffers Message (i.e., Message.custom_metadata,
+  // which is distinct from the metadata of the Schema or Field it may contain). This is
+  // NULL if the last message had no custom_metadata.
+  ns(KeyValue_vec_t) last_message_metadata;
   // Storage for a DictionaryBatch
   struct ArrowIpcDictionaryBatch dictionary;
   // Storage for a Footer
@@ -640,50 +644,90 @@ static inline int32_t ArrowIpcReadInt32LE(struct ArrowBufferView* data, int swap
   return value;
 }
 
-static int ArrowIpcDecoderSetMetadata(struct ArrowSchema* schema,
-                                      ns(KeyValue_vec_t) kv_vec,
-                                      struct ArrowError* error) {
+// Returned by an internal ArrowIpcMetadataVisitFunction to stop iterating early.
+// This is never returned to a caller of the public API.
+#define _NANOARROW_IPC_VISIT_STOP (-1)
+
+// Visits each key/value pair in a flatbuffers vector of KeyValue.
+//
+// Keys and values point into the message and are passed with an explicit size because
+// both are optional fields whose content may contain embedded nulls; a KeyValue with no
+// key or no value is visited with an empty string view.
+static ArrowErrorCode ArrowIpcDecoderVisitMetadata(ns(KeyValue_vec_t) kv_vec,
+                                                   ArrowIpcMetadataVisitFunction visit,
+                                                   void* private_data,
+                                                   struct ArrowError* error) {
   int64_t n_pairs = ns(KeyValue_vec_len(kv_vec));
-  if (n_pairs == 0) {
-    return NANOARROW_OK;
+
+  for (int64_t i = 0; i < n_pairs; i++) {
+    ns(KeyValue_table_t) kv = ns(KeyValue_vec_at(kv_vec, i));
+    flatbuffers_string_t key = ns(KeyValue_key(kv));
+    flatbuffers_string_t value = ns(KeyValue_value(kv));
+
+    struct ArrowStringView key_view = {key ? key : "",
+                                       (int64_t)flatbuffers_string_len(key)};
+    struct ArrowStringView value_view = {value ? value : "",
+                                         (int64_t)flatbuffers_string_len(value)};
+    NANOARROW_RETURN_NOT_OK(visit(key_view, value_view, private_data, error));
   }
 
+  return NANOARROW_OK;
+}
+
+static ArrowErrorCode ArrowIpcDecoderAppendMetadata(struct ArrowStringView key,
+                                                    struct ArrowStringView value,
+                                                    void* private_data,
+                                                    struct ArrowError* error) {
+  int result = ArrowMetadataBuilderAppend((struct ArrowBuffer*)private_data, key, value);
+  if (result != NANOARROW_OK) {
+    ArrowErrorSet(error, "ArrowMetadataBuilderAppend() failed");
+  }
+
+  return result;
+}
+
+// Packs a flatbuffers vector of KeyValue into nanoarrow's metadata representation.
+// out is initialized by this function and will be empty if kv_vec contains no pairs.
+static int ArrowIpcDecoderBuildMetadata(ns(KeyValue_vec_t) kv_vec,
+                                        struct ArrowBuffer* out,
+                                        struct ArrowError* error) {
+  int result = ArrowMetadataBuilderInit(out, NULL);
+  if (result != NANOARROW_OK) {
+    ArrowBufferReset(out);
+    ArrowErrorSet(error, "ArrowMetadataBuilderInit() failed");
+    return result;
+  }
+
+  int64_t n_pairs = ns(KeyValue_vec_len(kv_vec));
   if (n_pairs > 2147483647) {
+    ArrowBufferReset(out);
     ArrowErrorSet(error,
                   "Expected between 0 and 2147483647 key/value pairs but found %" PRId64,
                   n_pairs);
     return EINVAL;
   }
 
-  struct ArrowBuffer buf;
-  struct ArrowStringView key;
-  struct ArrowStringView value;
-  ns(KeyValue_table_t) kv;
-
-  int result = ArrowMetadataBuilderInit(&buf, NULL);
+  result =
+      ArrowIpcDecoderVisitMetadata(kv_vec, &ArrowIpcDecoderAppendMetadata, out, error);
   if (result != NANOARROW_OK) {
-    ArrowBufferReset(&buf);
-    ArrowErrorSet(error, "ArrowMetadataBuilderInit() failed");
+    ArrowBufferReset(out);
     return result;
   }
 
-  for (int64_t i = 0; i < n_pairs; i++) {
-    kv = ns(KeyValue_vec_at(kv_vec, i));
+  return NANOARROW_OK;
+}
 
-    key.data = ns(KeyValue_key(kv));
-    key.size_bytes = strlen(key.data);
-    value.data = ns(KeyValue_value(kv));
-    value.size_bytes = strlen(value.data);
-
-    result = ArrowMetadataBuilderAppend(&buf, key, value);
-    if (result != NANOARROW_OK) {
-      ArrowBufferReset(&buf);
-      ArrowErrorSet(error, "ArrowMetadataBuilderAppend() failed");
-      return result;
-    }
+static int ArrowIpcDecoderSetMetadata(struct ArrowSchema* schema,
+                                      ns(KeyValue_vec_t) kv_vec,
+                                      struct ArrowError* error) {
+  if (ns(KeyValue_vec_len(kv_vec)) == 0) {
+    return NANOARROW_OK;
   }
 
-  result = ArrowSchemaSetMetadata(schema, (const char*)buf.data);
+  struct ArrowBuffer buf;
+  NANOARROW_RETURN_NOT_OK(ArrowIpcDecoderBuildMetadata(kv_vec, &buf, error));
+
+  int result = ArrowSchemaSetMetadata(schema, (const char*)buf.data);
   ArrowBufferReset(&buf);
   if (result != NANOARROW_OK) {
     ArrowErrorSet(error, "ArrowSchemaSetMetadata() failed");
@@ -1434,6 +1478,7 @@ static inline void ArrowIpcDecoderResetHeaderInfo(struct ArrowIpcDecoder* decode
   decoder->footer = NULL;
   ArrowIpcFooterReset(&private_data->footer);
   private_data->last_message = NULL;
+  private_data->last_message_metadata = NULL;
 }
 
 // Returns NANOARROW_OK if data is large enough to read the first 8 bytes
@@ -1536,6 +1581,7 @@ ArrowErrorCode ArrowIpcDecoderVerifyHeader(struct ArrowIpcDecoder* decoder,
   decoder->body_size_bytes = ns(Message_bodyLength(message));
 
   private_data->last_message = ns(Message_header_get(message));
+  private_data->last_message_metadata = ns(Message_custom_metadata(message));
   return NANOARROW_OK;
 }
 
@@ -1692,7 +1738,79 @@ ArrowErrorCode ArrowIpcDecoderDecodeHeader(struct ArrowIpcDecoder* decoder,
   }
 
   private_data->last_message = message_header;
+  private_data->last_message_metadata = ns(Message_custom_metadata(message));
   return NANOARROW_OK;
+}
+
+ArrowErrorCode ArrowIpcDecoderGetMessageMetadata(struct ArrowIpcDecoder* decoder,
+                                                 struct ArrowBuffer* out,
+                                                 struct ArrowError* error) {
+  NANOARROW_DCHECK(decoder != NULL && decoder->private_data != NULL && out != NULL);
+  struct ArrowIpcDecoderPrivate* private_data =
+      (struct ArrowIpcDecoderPrivate*)decoder->private_data;
+
+  return ArrowIpcDecoderBuildMetadata(private_data->last_message_metadata, out, error);
+}
+
+struct ArrowIpcMetadataValueLookup {
+  struct ArrowStringView key;
+  struct ArrowStringView* value_out;
+};
+
+static ArrowErrorCode ArrowIpcDecoderMatchMetadataKey(struct ArrowStringView key,
+                                                      struct ArrowStringView value,
+                                                      void* private_data,
+                                                      struct ArrowError* error) {
+  NANOARROW_UNUSED(error);
+  struct ArrowIpcMetadataValueLookup* lookup =
+      (struct ArrowIpcMetadataValueLookup*)private_data;
+
+  if (key.size_bytes != lookup->key.size_bytes) {
+    return NANOARROW_OK;
+  }
+
+  if (key.size_bytes > 0 &&
+      memcmp(key.data, lookup->key.data, (size_t)key.size_bytes) != 0) {
+    return NANOARROW_OK;
+  }
+
+  *lookup->value_out = value;
+  return _NANOARROW_IPC_VISIT_STOP;
+}
+
+ArrowErrorCode ArrowIpcDecoderGetMessageMetadataValue(struct ArrowIpcDecoder* decoder,
+                                                      struct ArrowStringView key,
+                                                      struct ArrowStringView* value_out,
+                                                      struct ArrowError* error) {
+  NANOARROW_DCHECK(decoder != NULL && decoder->private_data != NULL && value_out != NULL);
+  struct ArrowIpcDecoderPrivate* private_data =
+      (struct ArrowIpcDecoderPrivate*)decoder->private_data;
+
+  struct ArrowIpcMetadataValueLookup lookup;
+  lookup.key = key;
+  lookup.value_out = value_out;
+
+  int result =
+      ArrowIpcDecoderVisitMetadata(private_data->last_message_metadata,
+                                   &ArrowIpcDecoderMatchMetadataKey, &lookup, error);
+  if (result == _NANOARROW_IPC_VISIT_STOP) {
+    // key was found and value_out was set
+    return NANOARROW_OK;
+  }
+
+  return result;
+}
+
+ArrowErrorCode ArrowIpcDecoderVisitMessageMetadata(struct ArrowIpcDecoder* decoder,
+                                                   ArrowIpcMetadataVisitFunction visit,
+                                                   void* private_data,
+                                                   struct ArrowError* error) {
+  NANOARROW_DCHECK(decoder != NULL && decoder->private_data != NULL && visit != NULL);
+  struct ArrowIpcDecoderPrivate* decoder_private =
+      (struct ArrowIpcDecoderPrivate*)decoder->private_data;
+
+  return ArrowIpcDecoderVisitMetadata(decoder_private->last_message_metadata, visit,
+                                      private_data, error);
 }
 
 static ArrowErrorCode ArrowIpcDecoderDecodeSchemaImpl(
